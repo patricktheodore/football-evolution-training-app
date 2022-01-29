@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import {
   ApolloClient,
   InMemoryCache,
@@ -11,6 +11,8 @@ import { setContext } from '@apollo/client/link/context';
 import Home from './pages/Home';
 import Nav from './components/Nav';
 import NoMatch from './pages/NoMatch';
+import Login from './pages/Login';
+import Register from './pages/Register';
 
 
 const httpLink = createHttpLink({
@@ -39,10 +41,11 @@ function App() {
         <div>
           {/* <StoreProvider> */}
             <Nav />
-            {/* <Switch>
-              <Route exact path="/" component={Home} />
-              <Route component={NoMatch} />
-            </Switch> */}
+            <Routes>
+              <Route exact path="/login" element={<Login/>} />
+              <Route exact path="/register" element={<Register/>} />
+              <Route element={<NoMatch/>} />
+            </Routes>
           {/* </StoreProvider> */}
         </div>
       </Router>
