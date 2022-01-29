@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
+const statsSchema = require("./Stats");
 
 const userSchema = new mongoose.Schema({
     first_name: { 
@@ -33,7 +34,14 @@ const userSchema = new mongoose.Schema({
     created_at: { 
         type: String, 
         default: Date.now 
-    }
+    },
+    sessions: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'Session'
+        }
+    ],
+    stats: [statsSchema]
 });
 
 // set up pre-save middleware to create password

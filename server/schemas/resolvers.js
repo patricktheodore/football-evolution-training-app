@@ -1,4 +1,4 @@
-const { User } = require('../models')
+const { User, Session } = require('../models')
 const { AuthenticationError} = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
@@ -16,6 +16,12 @@ const resolvers = {
             }
             throw new AuthenticationError('You need to be logged in!');
         },
+        sessions: async () => {
+            return await Session.find();
+        },
+        session: async (parent, args) => {
+            return await Session.findById(args)
+        }
     },
     Mutation: {
         addUser: async (parent, args) => {
@@ -38,6 +44,14 @@ const resolvers = {
             const token = signToken(user);
 
             return { token, user };
+        },
+        addSession: async (parent, args) => {
+            const session = await Session.create(args);
+            return session
+        },
+        saveStats: async (parents, args) => {
+            return await User.findByIdAndUpdate(args._id, args, { new: true });
+
         }
     }
 };
