@@ -32,9 +32,9 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        addUser (first_name: String!, last_name: String!, date_of_birth:String!, email:String!, password:String!): User!
+        addUser (first_name: String!, last_name: String!, email:String!, password:String!): User!
         updateUser (first_name: String, last_name: String, date_of_birth:String, password:String, is_coach:Boolean): User!
-        addCoach (first_name: String!, last_name: String!, date_of_birth:String!, email:String!, password:String!, is_coach:Boolean=false): User!
+        addCoach (first_name: String!, last_name: String!, email:String!, password:String!, is_coach:Boolean=false): User!
         login (email: String!, password: String!): Auth
     }
 `;
