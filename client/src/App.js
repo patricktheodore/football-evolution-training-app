@@ -9,7 +9,7 @@ import {
 import { setContext } from '@apollo/client/link/context';
 // import { StoreProvider } from './utils/GlobalState';
 import Home from './pages/Home';
-import Nav from './components/Nav';
+import AppBar from './components/AppBar';
 import NoMatch from './pages/NoMatch';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -40,7 +40,7 @@ function App() {
       <Router>
         <div>
           {/* <StoreProvider> */}
-            <Nav />
+            <AppBar />
             <Routes>
               <Route exact path="/login" element={<Login/>} />
               <Route exact path="/register" element={<Register/>} />
