@@ -49,8 +49,20 @@ const resolvers = {
             const session = await Session.create(args);
             return session
         },
-        saveStats: async (parents, args) => {
-            return await User.findByIdAndUpdate(args._id, args, { new: true });
+        saveStats: async (parents, args, context) => {
+            console.log(context.user);
+            console.log(args);
+            //if context.user.is_coach === true, update a specific users stats with the
+            // provided object. else return authenticationError
+
+                const stats = await User.findOneAndUpdate(
+                    { _id: args._id },
+                    { $set: { stats: args.input} },
+                    { new: true }
+                );
+    
+                return stats
+
 
         }
     }
