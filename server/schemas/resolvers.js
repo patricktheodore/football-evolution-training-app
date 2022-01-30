@@ -52,8 +52,6 @@ const resolvers = {
         saveStats: async (parents, args, context) => {
             console.log(context.user);
             console.log(args);
-            //if context.user.is_coach === true, update a specific users stats with the
-            // provided object. else return authenticationError
 
                 const stats = await User.findOneAndUpdate(
                     { _id: args._id },
@@ -62,7 +60,6 @@ const resolvers = {
                 );
     
                 return stats
-
 
         }
     }
