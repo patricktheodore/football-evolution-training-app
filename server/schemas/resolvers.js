@@ -1,5 +1,5 @@
 const { User, Session } = require('../models')
-const { AuthenticationError} = require('apollo-server-express');
+const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -8,7 +8,7 @@ const resolvers = {
             return await User.find();
         },
         user: async (parent, args) => {
-            return await User.findById(args);   
+            return await User.findById(args);
         },
         me: async (parent, args, context) => {
             if (context.user) {
@@ -28,7 +28,7 @@ const resolvers = {
             const user = await User.create(args);
             return user;
         },
-        login: async (parent, {email, password }) => {
+        login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
 
             if (!user) {
@@ -54,31 +54,50 @@ const resolvers = {
             console.log(context.user);
             console.log(args);
 
-                const stats = await User.findOneAndUpdate(
-                    { _id: args._id },
-                    { $set: { stats: args.input} },
-                    { new: true }
-                );
-                return stats;
+            const stats = await User.findOneAndUpdate(
+                { _id: args._id },
+                { $set: { stats: args.input } },
+                { new: true }
+            );
+            return stats;
         },
         addUserToSession: async (parent, args, context) => {
             if (context.user) {
 
                 const user = await User.findByIdAndUpdate(
-                    { _id: context.user._id},
-                    { $push: { sessions: args.sessionId} },
+                    { _id: context.user._id },
+                    { $addToSet: { sessions: args.sessionId } },
                     { new: true }
                 );
 
                 const session = await Session.findByIdAndUpdate(
                     { _id: args.sessionId },
-                    { $push: { players: context.user._id } }
+                    { $addToSet: { players: context.user._id } }
                 );
 
                 return user;
 
             } else {
                 throw new AuthenticationError('You must be logged in to do this!');
+            }
+        },
+        removeUserFromSession: async (parent, args, context) => {
+            if (context.user) {
+                const user = await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $pull: { sessions: args.sessionId } },
+                    { new: true }
+                );
+
+                const session = await Session.findByIdAndUpdate(
+                    { _id: args.sessionId },
+                    { $pull: { players: context.user._id } },
+                )
+
+                return user;
+
+            } else {
+                throw new AuthenticationError('You must be logged in to do this!')
             }
         }
     }

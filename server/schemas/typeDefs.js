@@ -87,6 +87,7 @@ const typeDefs = gql`
         addSession (input: SessionInput) : Session!
         saveStats (_id: ID!, input: StatsInput) : User!
         addUserToSession (sessionId: ID): User!
+        removeUserFromSession (sessionId: ID): User!
     }
 `;
 
