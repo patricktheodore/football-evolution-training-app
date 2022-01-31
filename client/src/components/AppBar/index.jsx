@@ -163,7 +163,9 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            FET
+          <Link to="/">
+              FET
+            </Link>
           </Typography>
           {showNavigation()}
         </Toolbar>

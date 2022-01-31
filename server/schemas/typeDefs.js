@@ -84,8 +84,8 @@ const typeDefs = gql`
         login (email: String!, password: String!): Auth
         updateUser (first_name: String, last_name: String, date_of_birth:String, password:String, is_coach:Boolean): User!
         addCoach (first_name: String!, last_name: String!, email:String!, password:String!, is_coach:Boolean=false): User!
-        addSession (input: SessionInput): Session!
-        saveStats(_id: ID!, input: StatsInput) : User!
+        addSession (input: SessionInput) : Session!
+        saveStats (_id: ID!, input: StatsInput) : User!
     }
 `;
 
