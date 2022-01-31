@@ -59,9 +59,27 @@ const resolvers = {
                     { $set: { stats: args.input} },
                     { new: true }
                 );
-    
-                return stats
+                return stats;
+        },
+        addUserToSession: async (parent, args, context) => {
+            if (context.user) {
 
+                const user = await User.findByIdAndUpdate(
+                    { _id: context.user._id},
+                    { $push: { sessions: args.sessionId} },
+                    { new: true }
+                );
+
+                const session = await Session.findByIdAndUpdate(
+                    { _id: args.sessionId },
+                    { $push: { players: context.user._id } }
+                );
+
+                return user;
+
+            } else {
+                throw new AuthenticationError('You must be logged in to do this!');
+            }
         }
     }
 };
