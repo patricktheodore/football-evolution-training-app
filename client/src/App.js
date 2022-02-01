@@ -7,13 +7,14 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
-// import { StoreProvider } from './utils/GlobalState';
+import { StoreProvider } from './utils/GlobalState';
 import Dashboard from './pages/Dashboard';
 import OurStoryWhole from './pages/OurStoryWhole'
 import AppBar from './components/AppBar';
 import NoMatch from './pages/NoMatch';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import Sessions from './pages/Sessions';
 
 
 const httpLink = createHttpLink({
@@ -40,16 +41,17 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-          {/* <StoreProvider> */}
+          <StoreProvider>
             <AppBar />
             <Routes>
               <Route exact path="/" element={<Dashboard/>} />
               <Route exact path="/ourStory" element={<OurStoryWhole />} />
               <Route exact path="/login" element={<Login/>} />
               <Route exact path="/register" element={<Register/>} />
+              <Route exact path="/sessions" element={<Sessions/>} />
               <Route element={<NoMatch/>} />
             </Routes>
-          {/* </StoreProvider> */}
+          </StoreProvider>
         </div>
       </Router>
     </ApolloProvider>

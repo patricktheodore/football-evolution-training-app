@@ -92,10 +92,24 @@ const resolvers = {
                 const session = await Session.findByIdAndUpdate(
                     { _id: args.sessionId },
                     { $pull: { players: context.user._id } },
-                )
+                );
 
                 return user;
 
+            } else {
+                throw new AuthenticationError('You must be logged in to do this!')
+            }
+        },
+        updateUser: async (parent, args, context) => {
+            if (context.user) {
+                console.log(args);
+                const user = await User.findByIdAndUpdate(
+                    { _id: context.user._id },
+                    { $set: args },
+                    { new: true }, 
+                );
+
+                return user;
             } else {
                 throw new AuthenticationError('You must be logged in to do this!')
             }

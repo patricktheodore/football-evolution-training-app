@@ -27,3 +27,63 @@ export const ADD_USER = gql`
         }
     }
 `;
+
+export const UPDATE_USER = gql`
+    mutation UpdateUser($firstName: String, $lastName: String, $dateOfBirth: String, $isCoach: Boolean) {
+        updateUser(first_name: $firstName, last_name: $lastName, date_of_birth: $dateOfBirth, is_coach: $isCoach) {
+          _id
+          first_name
+          last_name
+          date_of_birth
+          is_coach
+        }
+      }
+`;
+
+export const ADD_SESSION = gql`
+    mutation addSession($input: SessionInput) {
+        addSession(input: $input) {
+          _id
+          title
+          short_desc
+          long_desc
+          age_group
+          date
+          time
+          location
+        }
+      }
+`;
+
+export const SAVE_STATS = gql`
+    mutation saveStats($id: ID!, $input: StatsInput) {
+        saveStats(_id: $id, input: $input) {
+          first_name
+          stats {
+            preffered_position
+          }
+        }
+      }
+`;
+
+export const ADD_USER_TO_SESSION = gql`
+    mutation AddUserToSession($sessionId: ID) {
+        addUserToSession(sessionId: $sessionId) {
+          _id
+          sessions {
+            _id
+          }
+        }
+      }
+`;
+
+export const REMOVE_USER_FROM_SESSION = gql`
+    mutation RemoveUserFromSession($sessionId: ID) {
+        removeUserFromSession(sessionId: $sessionId) {
+          _id
+          sessions {
+            _id
+          }
+        }
+      }
+`;

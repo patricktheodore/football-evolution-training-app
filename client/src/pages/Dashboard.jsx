@@ -16,15 +16,9 @@ const Home = () => {
     <Container maxWidth="xl">
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
-          <Grid item xs={12} lg={8}>
             <OurStory />
-          </Grid>
-          <Grid item xs={6} lg={4}>
             <SessionInfo />
-          </Grid>
-          <Grid item xs={6} lg={4}>
             <TotalPlayers />
-          </Grid>
           <Grid item xs={6} lg={4}>
             <TotalSessions />
           </Grid>

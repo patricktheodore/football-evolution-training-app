@@ -22,6 +22,8 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import Auth from '../../utils/auth';
+import Check from '@mui/icons-material/Check';
+import MenuList from '@mui/material/MenuList';
 
 
 
@@ -74,67 +76,67 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 function showNavigation() {
 
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [anchorEl, setAnchorEl] = useState(null)
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  const [anchorEl, setAnchorEl] = useState(null)
 
-    const handleMenu = (event) => {
-      setAnchorEl(event.currentTarget);
-    };
+  const handleMenu = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
 
-    const handleClose = () => {
-      setAnchorEl(null);
-    };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
-    if (Auth.loggedIn()) {
-      return (
-        <div>
-          <IconButton
-            size="large"
-            aria-label="account of current user"
-            aria-controls="menu-appbar"
-            aria-haspopup="true"
-            onClick={handleMenu}
-            color="inherit"
-          >
-            <AccountCircle />
-          </IconButton>
-          <Menu
-            id="menu-appbar"
-            anchorEl={anchorEl}
-            anchorOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            keepMounted
-            transformOrigin={{
-              vertical: 'top',
-              horizontal: 'right',
-            }}
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-          >
-            <MenuItem onClick={handleClose}>Profile</MenuItem>
-            <MenuItem onClick={handleClose}>My account</MenuItem>
-          </Menu>
-        </div>
-      );
-    } else {
-      return (
-        <ul className="flex-row">
-          <li className="mx-1">
-            <Link to="/register">
-              Register
-            </Link>
-          </li>
-          <li className="mx-1">
-            <Link to="/login">
-              Sign In
-            </Link>
-          </li>
-        </ul>
-      );
-    }
+  if (Auth.loggedIn()) {
+    return (
+      <div>
+        <IconButton
+          size="large"
+          aria-label="account of current user"
+          aria-controls="menu-appbar"
+          aria-haspopup="true"
+          onClick={handleMenu}
+          color="inherit"
+        >
+          <AccountCircle />
+        </IconButton>
+        <Menu
+          id="menu-appbar"
+          anchorEl={anchorEl}
+          anchorOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          keepMounted
+          transformOrigin={{
+            vertical: 'top',
+            horizontal: 'right',
+          }}
+          open={Boolean(anchorEl)}
+          onClose={handleClose}
+        >
+          <MenuItem onClick={handleClose}>Profile</MenuItem>
+          <MenuItem onClick={handleClose}>My account</MenuItem>
+        </Menu>
+      </div>
+    );
+  } else {
+    return (
+      <ul className="flex-row">
+        <li className="mx-1">
+          <Link to="/register">
+            Register
+          </Link>
+        </li>
+        <li className="mx-1">
+          <Link to="/login">
+            Sign In
+          </Link>
+        </li>
+      </ul>
+    );
   }
+}
 
 export default function PersistentDrawerLeft() {
   const theme = useTheme();
@@ -163,7 +165,7 @@ export default function PersistentDrawerLeft() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-          <Link to="/">
+            <Link to="/">
               FET
             </Link>
           </Typography>
@@ -184,36 +186,40 @@ export default function PersistentDrawerLeft() {
         open={open}
       >
         <DrawerHeader>
+          <ListItemIcon>MENU</ListItemIcon>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </DrawerHeader>
         <Divider />
-        <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {['All mail', 'Trash', 'Spam'].map((text, index) => (
-            <ListItem button key={text}>
-              <ListItemIcon>
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItem>
-          ))}
-        </List>
+        <MenuList dense>
+
+
+          <DrawerHeader>
+            <ListItemText>Training</ListItemText>
+          </DrawerHeader>
+          <MenuItem>
+            <ListItemText>Single</ListItemText>
+          </MenuItem>
+          <MenuItem>
+            <ListItemText>1.15</ListItemText>
+          </MenuItem>
+          <MenuItem>
+            <ListItemText>Double</ListItemText>
+          </MenuItem>
+          <Divider />
+          <MenuItem>
+            <ListItemText>Add space before paragraph</ListItemText>
+          </MenuItem>
+          <MenuItem>
+            <ListItemText>Add space after paragraph</ListItemText>
+          </MenuItem>
+          <Divider />
+          <MenuItem>
+            <ListItemText>Custom spacing...</ListItemText>
+          </MenuItem>
+        </MenuList>
       </Drawer>
-      <Main open={open}>
-        <DrawerHeader />
-      </Main>
     </Box>
   );
 }
