@@ -22,7 +22,7 @@ export const reducer = (state, action) => {
             case UPDATE_ME:
                 return {
                     ...state,
-                    stats: [...action.me],
+                    me: [...action.me],
                 };
 
         default: 
