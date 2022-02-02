@@ -5,25 +5,18 @@ import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import ChevronRightIcon from '@mui/icons-material/ChevronRight';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { Link } from 'react-router-dom';
-import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
 import Auth from '../../utils/auth';
-import Check from '@mui/icons-material/Check';
 import MenuList from '@mui/material/MenuList';
+import Avatar from './Avatar';
 
 
 
@@ -89,54 +82,61 @@ function showNavigation() {
 
   if (Auth.loggedIn()) {
     return (
-      <div>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="menu-appbar"
-          aria-haspopup="true"
-          onClick={handleMenu}
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <Menu
-          id="menu-appbar"
-          anchorEl={anchorEl}
-          anchorOrigin={{
-            vertical: 'top',
-            horizontal: 'right',
-          }}
-          keepMounted
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: 'right',
-          }}
-          open={Boolean(anchorEl)}
-          onClose={handleClose}
-        >
-          <MenuItem onClick={handleClose}>Profile</MenuItem>
-          <MenuItem onClick={handleClose}>My account</MenuItem>
-        </Menu>
-      </div>
+      <Avatar />
     );
   } else {
     return (
       <ul className="flex-row">
         <li className="mx-1">
-          <Link to="/register">
-            Register
+          <Link to="/login">
+            Sign In
           </Link>
         </li>
         <li className="mx-1">
-          <Link to="/login">
-            Sign In
+          <Link to="/register">
+            Register
           </Link>
         </li>
       </ul>
     );
   }
-}
+};
+
+function drawerNavigation() {
+
+  if (Auth.loggedIn()) {
+    return (
+      <MenuItem>
+        <ListItemText>
+          <Link to="/profile">
+            My Profile
+          </Link>
+        </ListItemText>
+      </MenuItem>
+    );
+  } else {
+    return (
+      <div>
+        <MenuItem>
+          <ListItemText>
+            <Link to="/login">
+              Sign In
+            </Link>
+          </ListItemText>
+        </MenuItem>
+        <MenuItem>
+          <ListItemText>
+            <Link to="/register">
+              Register
+            </Link>
+          </ListItemText>
+        </MenuItem>
+      </div>
+    );
+  }
+};
+
+
 
 export default function PersistentDrawerLeft() {
   const theme = useTheme();
@@ -154,7 +154,7 @@ export default function PersistentDrawerLeft() {
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
       <AppBar position="fixed" open={open}>
-        <Toolbar>
+        <Toolbar sx={{ justifyContent: 'space-between' }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -186,38 +186,35 @@ export default function PersistentDrawerLeft() {
         open={open}
       >
         <DrawerHeader>
-          <ListItemIcon>MENU</ListItemIcon>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === 'ltr' ? <ChevronLeftIcon /> : <ChevronRightIcon />}
           </IconButton>
         </DrawerHeader>
         <Divider />
         <MenuList dense>
-
-
-          <DrawerHeader>
-            <ListItemText>Training</ListItemText>
-          </DrawerHeader>
           <MenuItem>
-            <ListItemText>Single</ListItemText>
+            <ListItemText>
+              <Link to="/" onClick={handleDrawerClose}>
+                Home
+              </Link>
+            </ListItemText>
           </MenuItem>
           <MenuItem>
-            <ListItemText>1.15</ListItemText>
+            <ListItemText>
+              <Link to="/aboutUs" onClick={handleDrawerClose}>
+                About Us
+              </Link>
+            </ListItemText>
           </MenuItem>
           <MenuItem>
-            <ListItemText>Double</ListItemText>
+            <ListItemText>
+              <Link to="/trainWithUs" onClick={handleDrawerClose}>
+                Train With Us
+              </Link>
+            </ListItemText>
           </MenuItem>
           <Divider />
-          <MenuItem>
-            <ListItemText>Add space before paragraph</ListItemText>
-          </MenuItem>
-          <MenuItem>
-            <ListItemText>Add space after paragraph</ListItemText>
-          </MenuItem>
-          <Divider />
-          <MenuItem>
-            <ListItemText>Custom spacing...</ListItemText>
-          </MenuItem>
+          {drawerNavigation()}
         </MenuList>
       </Drawer>
     </Box>

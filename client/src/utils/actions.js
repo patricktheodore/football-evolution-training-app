@@ -1,5 +1,6 @@
 export const UPDATE_SESSIONS = "UPDATE_SESSIONS";
 export const UPDATE_ME = "UPDATE_ME";
 export const UPDATE_PLAYERS = "UPDATE_PLAYERS";
+export const ADD_USER_TO_SESSION = "ADD_USER_TO_SESSION";
 
 

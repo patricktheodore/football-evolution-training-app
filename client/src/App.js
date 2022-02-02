@@ -8,14 +8,14 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 import { StoreProvider } from './utils/GlobalState';
-import Dashboard from './pages/Dashboard';
-import OurStoryWhole from './pages/OurStoryWhole'
+import Home from './pages/Home';
+import AboutUs from './components/AboutUs'
 import AppBar from './components/AppBar';
 import NoMatch from './pages/NoMatch';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Sessions from './pages/Sessions';
-import Profile from './pages/Profile'
+import Profile from './pages/Profile';
+import TrainWithUs from './pages/TrainWithUs';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -44,12 +44,12 @@ function App() {
           <StoreProvider>
             <AppBar />
             <Routes>
-              <Route exact path="/" element={<Dashboard/>} />
-              <Route exact path="/ourStory" element={<OurStoryWhole />} />
+              <Route exact path="/" element={<Home/>} />
+              <Route exact path="/aboutUs" element={<AboutUs />} />
               <Route exact path="/login" element={<Login/>} />
               <Route exact path="/register" element={<Register/>} />
-              <Route exact path="/sessions" element={<Sessions/>} />
               <Route exact path="/profile" element={<Profile/>} />
+              <Route exact path="/trainWithUs" element={<TrainWithUs />} />
               <Route element={<NoMatch/>} />
             </Routes>
           </StoreProvider>

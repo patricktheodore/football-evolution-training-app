@@ -4,6 +4,7 @@ import {
     UPDATE_ME,
     UPDATE_PLAYERS,
 } from './actions';
+import { ADD_USER_TO_SESSION } from './mutations';
 
 export const reducer = (state, action) => {
     switch (action.type) {
@@ -24,7 +25,11 @@ export const reducer = (state, action) => {
                     ...state,
                     me: [...action.me],
                 };
-
+            case ADD_USER_TO_SESSION:
+            return {
+                ...state,
+                session: [...action.session]
+            }
         default: 
             return state;    
     }

@@ -1,7 +1,7 @@
 import React from "react";
 import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import OurStoryWhole from '../components/OurStoryWhole';
+import AboutUs from '../components/AboutUs';
 import Container from '@mui/material/Container';
 
 // dashboard contains, 'our story' 
@@ -13,7 +13,7 @@ const Home = () => {
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2} sx={{ justifyContent: "center" }}>
           <Grid item xs={12} lg={10}>
-            <OurStoryWhole />
+            <AboutUs />
           </Grid>
         </Grid>
       </Box>

@@ -6,6 +6,8 @@ import Container from '@mui/material/Container';
 
 import { QUERY_USER, GET_ME } from '../utils/queries';
 import Auth from '../utils/auth';
+import { Typography } from '@mui/material';
+import { getOverall } from '../utils/helpers';
 
 const Profile = () => {
     const { _id: userParam } = useParams();
@@ -26,21 +28,22 @@ const Profile = () => {
 
     if (!user?._id) {
         return (
-            <h4>
+            <Typography sx= {{ mt: 15}}>
             You need to be logged in to see this. Use the navigation links above to
             sign up or log in!
-          </h4>
+          </Typography>
         );
     }
 
 
 
     return (
-        <Container maxWidth="xl">
+        <Container maxWidth="xl" sx={{ mt: 15}}>
             <h2>
                 {userParam ? `${user.first_name}'s` : 'your'} profile.
             </h2>
             <StatsDisplay user={user}/>
+            {/* upcoming sessions */}
         </Container>
     );
 }
