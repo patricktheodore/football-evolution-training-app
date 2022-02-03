@@ -8,15 +8,16 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
-import Logout from '@mui/icons-material/Logout';
-import PersonIcon from '@mui/icons-material/Person';
 import { Link, useParams } from 'react-router-dom';
 import Auth from '../../utils/auth';
 import { GET_ME, QUERY_USER } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
 import { initialize } from '../../utils/helpers';
+import AdminPanelSettingsTwoToneIcon from '@mui/icons-material/AdminPanelSettingsTwoTone';
+import SettingsApplicationsSharpIcon from '@mui/icons-material/SettingsApplicationsSharp';
+import PersonOutlineSharpIcon from '@mui/icons-material/PersonOutlineSharp';
+import ExitToAppSharpIcon from '@mui/icons-material/ExitToAppSharp';
+import VerifiedUserSharpIcon from '@mui/icons-material/VerifiedUserSharp';
 
 
 export default function AccountMenu() {
@@ -36,6 +37,21 @@ export default function AccountMenu() {
 
   const { loading, data } = useQuery(GET_ME);
   const user = data?.me || {};
+
+  const isCoach = () => {
+    if (user.is_coach) {
+      return (
+        <MenuItem>
+        <ListItemIcon>
+          <VerifiedUserSharpIcon fontSize="small" />
+        </ListItemIcon>
+        Dashboard
+      </MenuItem>
+      )
+    } else {
+      return
+    }
+  }
 
   return (
     <React.Fragment>
@@ -89,18 +105,19 @@ export default function AccountMenu() {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem>
-          <PersonIcon sx={{ mr: 1.5 }} /> <Link to="/profile">Profile</Link>
+          <PersonOutlineSharpIcon sx={{ mr: 1.5 }} /> <Link to="/profile">Profile</Link>
         </MenuItem>
         <Divider />
         <MenuItem>
           <ListItemIcon>
-            <Settings fontSize="small" />
+            <SettingsApplicationsSharpIcon fontSize="small" />
           </ListItemIcon>
           Settings
         </MenuItem>
+        {isCoach()}
         <MenuItem onClick={logout}>
           <ListItemIcon>
-            <Logout fontSize="small" />
+            <ExitToAppSharpIcon fontSize="small" />
           </ListItemIcon>
           Logout
         </MenuItem>

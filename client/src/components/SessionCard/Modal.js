@@ -38,7 +38,6 @@ export default function BasicModal(props) {
       type: ADD_USER_TO_SESSION,
       session: { ...session, sessionId }
     });
-
   }
 
   return (

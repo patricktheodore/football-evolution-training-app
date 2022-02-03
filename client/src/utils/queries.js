@@ -28,9 +28,6 @@ export const QUERY_ALL_SESSIONS = gql`
         date
         time
         location
-        players {
-            _id
-        }
     }
 }
 `;

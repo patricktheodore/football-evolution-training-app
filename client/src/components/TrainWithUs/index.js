@@ -11,20 +11,25 @@ import { Grid, Container, Box, Card, CardContent, Typography } from '@mui/materi
 
 
 export default function index() {
-    const [state, dispatch] = useStoreContext();
+    // const [state, dispatch] = useStoreContext();
 
-    const { sessions } = state;
+    // const { sessions } = state;
 
-    const { loading, data: sessionData } = useQuery(QUERY_ALL_SESSIONS);
+    const { data } = useQuery(QUERY_ALL_SESSIONS); 
+    let sessions = [];
+    if (data) {
+        sessions = data.sessions
+    }; 
 
-    useEffect(() => {
-        if (sessionData) {
-            dispatch({
-                type: UPDATE_SESSIONS,
-                sessions: sessionData.sessions
-            })
-        }
-    }, [sessionData, loading, dispatch]);
+
+    // useEffect(() => {
+    //     if (sessionData) {
+    //         dispatch({
+    //             type: UPDATE_SESSIONS,
+    //             sessions: sessionData.sessions
+    //         })
+    //     }
+    // }, [sessionData, loading, dispatch]);
 
     return (
         <Container maxWidth="xl">
@@ -43,7 +48,8 @@ export default function index() {
                             </CardContent>
                         </Card>
                     </Grid>
-                    {/* for each type of session, create card. query get all sessions. */}
+                    {/* <SessionCard session={sessions[0]} /> */}
+
                     {sessions.map((session) => (
                         <SessionCard session={session} />
                     ))}

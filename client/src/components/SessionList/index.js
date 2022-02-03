@@ -26,9 +26,10 @@ function SessionList() {
 
     return (
         <Grid container spacing={2}>
-        {sessions.map((session) => (
+            <SessionCard session={sessions[0]} />
+        {/* {sessions.map((session) => (
           <SessionCard session={session} />
-        ))}
+        ))} */}
       </Grid>
     )
 }

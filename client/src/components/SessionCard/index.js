@@ -10,7 +10,7 @@ export default function SessionCard(props) {
     <Grid item xs={12} lg={4}>
       <Card sx={{ flexGrow: 1, minHeight: "5rem" }}>
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h5">
             {props.session.title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
@@ -20,7 +20,7 @@ export default function SessionCard(props) {
             {props.session.short_desc}
           </Typography>
         </CardContent>
-        <Modal session={props.session}/>
+        {/* <Modal session={props.session}/> */}
       </Card>
     </Grid>
   );

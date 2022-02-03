@@ -34,3 +34,6 @@ export function initialize(user) {
     //return A+B 
 }
 
+export function animateCircle() {
+    
+}
