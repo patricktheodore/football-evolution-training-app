@@ -19,7 +19,8 @@ const typeDefs = gql`
         title: String
         short_desc: String
         long_desc: String
-        age_group: String
+        min_age: Int
+        max_age: Int
         date: String
         time: String
         location: String
@@ -45,7 +46,8 @@ const typeDefs = gql`
         title: String
         short_desc: String
         long_desc: String
-        age_group: String
+        min_age: Int
+        max_age: Int
         date: String
         time: String
         location: String
@@ -80,14 +82,15 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        addUser (first_name: String!, last_name: String!, email:String!, password:String!): User!
+        addUser (first_name: String!, last_name: String!, email:String!, password:String!): Auth
         login (email: String!, password: String!): Auth
-        updateUser (first_name: String, last_name: String, date_of_birth:String, is_coach:Boolean): User!
+        updateUser (first_name: String, last_name: String, date_of_birth: String, is_coach:Boolean): User!
         addCoach (first_name: String!, last_name: String!, email:String!, password:String!, is_coach:Boolean=false): User!
         addSession (input: SessionInput) : Session!
         saveStats (_id: ID!, input: StatsInput) : User!
         addUserToSession (sessionId: ID): User!
         removeUserFromSession (sessionId: ID): User!
+        updateSession (sessionId: ID, input: SessionInput): Session!
     }
 `;
 

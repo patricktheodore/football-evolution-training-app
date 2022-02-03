@@ -58,7 +58,7 @@ export default function BasicModal(props) {
             {props.session.long_desc}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Age Group: {props.session.age_group}
+            Age Group: {props.session.min_age} - {props.session.max_age}
           </Typography>
           <Button onClick={handleSaveSession(props.session._id)}>
             Sign Up For Session

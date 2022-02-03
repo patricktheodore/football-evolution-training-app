@@ -26,7 +26,10 @@ const resolvers = {
     Mutation: {
         addUser: async (parent, args) => {
             const user = await User.create(args);
-            return user;
+
+            const token = signToken(user)
+
+            return { token, user };
         },
         login: async (parent, { email, password }) => {
             const user = await User.findOne({ email });
@@ -113,6 +116,15 @@ const resolvers = {
             } else {
                 throw new AuthenticationError('You must be logged in to do this!')
             }
+        },
+        updateSession: async (parent, args, context) => {
+            const session = await Session.findByIdAndUpdate(
+                { _id: args.sessionId },
+                { $set: args.input },
+                { new: true },
+            );
+
+            return session;
         }
     }
 };

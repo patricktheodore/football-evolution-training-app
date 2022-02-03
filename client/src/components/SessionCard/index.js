@@ -14,7 +14,7 @@ export default function SessionCard(props) {
             {props.session.title}
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            Age Group: {props.session.age_group} | Current Players in Program: {props.session.players.length}
+            Min Age: {props.session.min_age} | Max Age: {props.session.max_age} | Current Players in Program: {props.session.players.length}
           </Typography>
           <Typography variant="body1" color="text.primary">
             {props.session.short_desc}

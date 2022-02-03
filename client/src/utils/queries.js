@@ -23,7 +23,8 @@ export const QUERY_ALL_SESSIONS = gql`
         title
         short_desc
         long_desc
-        age_group
+        min_age
+        max_age
         date
         time
         location
@@ -72,7 +73,8 @@ export const QUERY_SESSION = gql`
             title
             short_desc
             long_desc
-            age_group
+            min_age
+            max_age
             date
             time
             location

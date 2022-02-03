@@ -17,14 +17,17 @@ export const LOGIN = gql`
 export const ADD_USER = gql`
     mutation addUser($first_name: String!, $last_name: String!, $email: String!, $password: String!) {
         addUser(first_name: $first_name, last_name: $last_name, email: $email, password: $password) {
-            _id
-            first_name,
-            last_name,
-            date_of_birth,
-            is_coach,
-            email,
-            password,
-            created_at,
+            token
+            user {
+              _id
+              first_name,
+              last_name,
+              date_of_birth,
+              is_coach,
+              email,
+              password,
+              created_at,
+            }
         }
     }
 `;
@@ -48,7 +51,8 @@ export const ADD_SESSION = gql`
           title
           short_desc
           long_desc
-          age_group
+          min_age
+          max_age
           date
           time
           location
@@ -85,6 +89,21 @@ export const REMOVE_USER_FROM_SESSION = gql`
           sessions {
             _id
           }
+        }
+      }
+`;
+
+export const UPDATE_SESSION = gql`
+    mutation UpdateSession($sessionId: ID, $input: SessionInput) {
+        removeUserFromSession(sessionId: $sessionId, input: $input) {
+          title
+          short_desc
+          long_desc
+          min_age
+          max_age
+          date
+          time
+          location
         }
       }
 `;

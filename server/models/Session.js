@@ -14,8 +14,12 @@ const sessionSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
-    age_group: {
-        type: String,
+    min_age: {
+        type: Number,
+        trim: true
+    },
+    max_age: {
+        type: Number,
         trim: true
     },
     date: {
