@@ -15,9 +15,7 @@ const userSchema = new mongoose.Schema({
         trim: true 
     },
     date_of_birth: { 
-        type: String,
-        required: true,
-        trim: true 
+        type: Date,
     },
     is_coach: { 
         type: Boolean, 

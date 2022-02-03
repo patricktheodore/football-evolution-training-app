@@ -16,3 +16,21 @@ export function getOverall(stats) {
     return overall
 };
 
+export function initialize(user) {
+
+    if (!user.first_name || !user.last_name) {
+        return `U`
+    }
+
+    let firstInitial = user.first_name.charAt(0)
+    let lastInitial = user.last_name.charAt(0)
+
+    let initials = `${firstInitial}${lastInitial}`;
+
+    return initials.toUpperCase();
+
+    //get value of first_name, take first letter, to uppercase
+    //get value of last_name, take first, letter, to uppercase,
+    //return A+B 
+}
+

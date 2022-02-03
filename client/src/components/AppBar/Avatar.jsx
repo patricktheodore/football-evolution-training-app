@@ -12,8 +12,12 @@ import PersonAdd from '@mui/icons-material/PersonAdd';
 import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import PersonIcon from '@mui/icons-material/Person';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import Auth from '../../utils/auth';
+import { GET_ME, QUERY_USER } from '../../utils/queries';
+import { useQuery } from '@apollo/client';
+import { initialize } from '../../utils/helpers';
+
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -26,9 +30,13 @@ export default function AccountMenu() {
   };
 
   const logout = (event) => {
-      event.preventDefault();
-      Auth.logout()
+    event.preventDefault();
+    Auth.logout()
   };
+
+  const { loading, data } = useQuery(GET_ME);
+  const user = data?.me || {};
+
   return (
     <React.Fragment>
       <Box sx={{ display: 'flex', alignItems: 'center', textAlign: 'center' }}>
@@ -41,7 +49,7 @@ export default function AccountMenu() {
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32 }}><PersonIcon /></Avatar>
+            <Avatar sx={{ width: 44, height: 44 }}>{initialize(user)}</Avatar>
           </IconButton>
         </Tooltip>
       </Box>
@@ -81,7 +89,7 @@ export default function AccountMenu() {
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       >
         <MenuItem>
-          <PersonIcon sx={{ mr: 1.5 }}/> <Link to="/profile">Profile</Link>
+          <PersonIcon sx={{ mr: 1.5 }} /> <Link to="/profile">Profile</Link>
         </MenuItem>
         <Divider />
         <MenuItem>
