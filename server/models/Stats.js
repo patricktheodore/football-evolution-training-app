@@ -1,16 +1,6 @@
 const { Schema } = require('mongoose');
 
 const statsSchema = new Schema({
-    preffered_position: {
-        type: String,
-        required: false,
-        trim: true
-    },
-    preffered_foot: {
-        type: String,
-        required: true,
-        trim: true
-    },
     pace: {
         type: Number,
         min: 0,

@@ -35,6 +35,16 @@ const userSchema = new mongoose.Schema({
         type: String, 
         default: Date.now 
     },
+    preffered_position: {
+        type: String,
+        required: false,
+        trim: true
+    },
+    preffered_foot: {
+        type: String,
+        required: true,
+        trim: true
+    },
     sessions: [
         {
             type: Schema.Types.ObjectId,
@@ -52,7 +62,6 @@ userSchema.pre('save', async function (next) {
         const saltRounds = 10;
         this.password = await bcrypt.hash(this.password, saltRounds);
     }
-
     next();
 });
 
@@ -60,11 +69,6 @@ userSchema.pre('save', async function (next) {
 userSchema.methods.isCorrectPassword = async function (password) {
     return await bcrypt.compare(password, this.password);
 };
-
-userSchema.virtual('token').get(function () {
-    
-    return this.comments.length;
-});
 
 const User = mongoose.model('User', userSchema);
 

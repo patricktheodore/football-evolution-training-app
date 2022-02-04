@@ -10,6 +10,8 @@ const typeDefs = gql`
         email: String
         password: String
         created_at: String
+        preffered_position: String
+        preffered_foot: String
         sessions: [Session]
         stats: [Stats]
     }
@@ -28,8 +30,6 @@ const typeDefs = gql`
     }
     
     type Stats {
-        preffered_position: String
-        preffered_foot: String
         pace: Int
         shooting: Int
         passing: Int
@@ -54,8 +54,6 @@ const typeDefs = gql`
     }
 
     input StatsInput {
-        preffered_position: String
-        preffered_foot: String
         pace: Int
         shooting: Int
         passing: Int
@@ -82,7 +80,7 @@ const typeDefs = gql`
     }
 
     type Mutation {
-        addUser (first_name: String!, last_name: String!, email:String!, password:String!, date_of_birth: String!): Auth
+        addUser (first_name: String!, last_name: String!, email:String!, password:String!, date_of_birth: String!, preffered_position: String!, preffered_foot: String!): Auth
         login (email: String!, password: String!): Auth
         updateUser (first_name: String, last_name: String, date_of_birth: String, is_coach:Boolean): User!
         addCoach (first_name: String!, last_name: String!, email:String!, password:String!, is_coach:Boolean=false): User!

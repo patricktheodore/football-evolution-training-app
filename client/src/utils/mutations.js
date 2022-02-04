@@ -15,8 +15,8 @@ export const LOGIN = gql`
 `;
 
 export const ADD_USER = gql`
-    mutation addUser($first_name: String!, $last_name: String!, $email: String!, $password: String!, $date_of_birth: String!) {
-        addUser(first_name: $first_name, last_name: $last_name, email: $email, password: $password, date_of_birth: $date_of_birth) {
+    mutation addUser($first_name: String!, $last_name: String!, $email: String!, $password: String!, $date_of_birth: String!, $preffered_foot: String!, $preffered_position: String!) {
+        addUser(first_name: $first_name, last_name: $last_name, email: $email, password: $password, date_of_birth: $date_of_birth, preffered_foot: $preffered_foot, preffered_position: $preffered_position) {
             token
             user {
               _id
@@ -27,19 +27,23 @@ export const ADD_USER = gql`
               email,
               password,
               created_at,
+              preffered_foot
+              preffered_position
             }
         }
     }
 `;
 
 export const UPDATE_USER = gql`
-    mutation UpdateUser($firstName: String, $lastName: String, $dateOfBirth: String, $isCoach: Boolean) {
-        updateUser(first_name: $firstName, last_name: $lastName, date_of_birth: $dateOfBirth, is_coach: $isCoach) {
+    mutation UpdateUser($firstName: String, $lastName: String, $dateOfBirth: String, $isCoach: Boolean, $preffered_position: String!) {
+        updateUser(first_name: $firstName, last_name: $lastName, date_of_birth: $dateOfBirth, is_coach: $isCoach, preffered_position: $preffered_position) {
           _id
           first_name
           last_name
           date_of_birth
           is_coach
+          preffered_foot
+          preffered_position
         }
       }
 `;

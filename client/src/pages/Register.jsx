@@ -15,6 +15,7 @@ import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 import DatePicker from '../components/DatePicker';
 import moment from 'moment';
+import { Radio, RadioGroup, FormControlLabel, FormLabel } from '@mui/material'
 
 function Copyright(props) {
   return (
@@ -38,7 +39,7 @@ export default function SignUp() {
   const handleFormSubmit = async (event) => {
     event.preventDefault();
 
-    console.log({formState});
+    console.log({ formState });
 
     const mutationResponse = await addUser({
       variables: {
@@ -46,14 +47,16 @@ export default function SignUp() {
         password: formState.password,
         first_name: formState.firstName,
         last_name: formState.lastName,
-        date_of_birth: formState.dateOfBirth
+        date_of_birth: formState.dateOfBirth,
+        preffered_foot: formState.preffered_foot,
+        preffered_position: formState.preffered_position
       },
     });
     const token = mutationResponse.data.addUser.token;
     Auth.login(token);
   };
 
-  function enterDoB(dob){
+  function enterDoB(dob) {
 
     // dob is UTC, 
     // TODO: convert dob to human
@@ -62,8 +65,6 @@ export default function SignUp() {
       ...formState,
       dateOfBirth: dob,
     })
-
-
   }
 
   const handleChange = (event) => {
@@ -129,8 +130,24 @@ export default function SignUp() {
                 />
               </Grid>
               <Grid item xs={12}>
-                <DatePicker  onValue={enterDoB}/>
+                <DatePicker onValue={enterDoB} />
               </Grid>
+              <Grid item xs={12}>
+                <FormLabel id="preffered_foot">Preffered Foot</FormLabel>
+                <RadioGroup
+                  row
+                  aria-labelledby="preffered_foot"
+                  name="preffered_foot"
+                  label="preffered_foot"
+                  id="preffered_foot"
+                  onChange={handleChange}
+                >
+                  <FormControlLabel value="Left" control={<Radio color="success"/>} label="Left" />
+                  <FormControlLabel value="Right" control={<Radio color="success"/>} label="Right" />
+                  <FormControlLabel value="Both" control={<Radio color="success"/>} label="Both" />
+                </RadioGroup>
+              </Grid>
+              {/* insert preffered position select component here */}
               <Grid item xs={12}>
                 <TextField
                   required

@@ -43,12 +43,12 @@ export const QUERY_USER = gql`
           email
           password
           created_at
+          preffered_foot
+          preffered_position
           sessions {
             _id
           }
           stats {
-            preffered_position
-            preffered_foot
             pace
             shooting
             passing
@@ -93,9 +93,9 @@ query Me {
       email
       password
       created_at
+      preffered_foot
+      preffered_position
       stats {
-        preffered_position
-        preffered_foot
         pace
         shooting
         passing
