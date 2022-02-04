@@ -16,7 +16,6 @@ const SessionInfo = () => {
             <Card sx={{ minHeight: "20rem" }}>
                 <CardContent>
                     <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                        Train With Us!
                     </Typography>
                     <Typography sx={{ mb: 1.5 }} color="text.secondary">
                         We offer a wide range of sessions, dedicated to young and old, players beginning their football

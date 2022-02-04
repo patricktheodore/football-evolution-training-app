@@ -1,35 +1,22 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { useStoreContext } from '../../utils/GlobalState';
-import {
-    UPDATE_SESSIONS
-} from '../../utils/actions';
+import { UPDATE_SESSIONS } from '../../utils/actions';
 import { QUERY_ALL_SESSIONS } from '../../utils/queries';
 import SessionCard from '../SessionCard';
 import { Grid, Container, Box, Card, CardContent, Typography } from '@mui/material';
-
+import CardModal from '../SessionCard/Modal';
 
 export default function index() {
-    // const [state, dispatch] = useStoreContext();
-
-    // const { sessions } = state;
-
     const { data } = useQuery(QUERY_ALL_SESSIONS); 
+
     let sessions = [];
     if (data) {
+        console.log(data);
+        console.log(data.sessions);
         sessions = data.sessions
     }; 
-
-
-    // useEffect(() => {
-    //     if (sessionData) {
-    //         dispatch({
-    //             type: UPDATE_SESSIONS,
-    //             sessions: sessionData.sessions
-    //         })
-    //     }
-    // }, [sessionData, loading, dispatch]);
 
     return (
         <Container maxWidth="xl">
@@ -48,10 +35,8 @@ export default function index() {
                             </CardContent>
                         </Card>
                     </Grid>
-                    {/* <SessionCard session={sessions[0]} /> */}
-
                     {sessions.map((session) => (
-                        <SessionCard session={session} />
+                        <SessionCard session={session} key={session._id}/>
                     ))}
                 </Grid>
             </Box>

@@ -20,7 +20,7 @@ const resolvers = {
             return await Session.find();
         },
         session: async (parent, args) => {
-            return await Session.findById(args)
+            return await Session.findById(args._id)
         }
     },
     Mutation: {

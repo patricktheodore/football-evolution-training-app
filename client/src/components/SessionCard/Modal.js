@@ -4,9 +4,11 @@ import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
-import Auth from '../../utils/auth';
-import { useStoreContext } from '../../utils/GlobalState';
-import { ADD_USER_TO_SESSION } from '../../utils/actions';
+import { ADD_SESSION_TO_USER, ADD_USER_TO_SESSION } from '../../utils/mutations';
+import { QUERY_USER, GET_ME } from '../../utils/queries';
+import { useQuery } from '@apollo/client';
+import { Link, useParams } from 'react-router-dom';
+
 
 const style = {
   position: 'absolute',
@@ -25,20 +27,22 @@ export default function BasicModal(props) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const { data } = useQuery(GET_ME);
+
+  const user = data?.me;
+  const session = '';
+
+  const [addUser] = useMutation(ADD_USER_TO_SESSION);
+  const [addSession] = useMutation(ADD_SESSION_TO_USER);
   
   const handleSaveSession = (sessionId) => {
-    // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [state, dispatch] = useStoreContext();
-    console.log(props.session);
-    console.log(sessionId);
+    // USE MUTATION HERE
+    addUser(sessionId)
+    // get me._id and add to session._id.players[]
 
-    const { session } = state;
-
-    dispatch({
-      type: ADD_USER_TO_SESSION,
-      session: { ...session, sessionId }
-    });
-  }
+    // also, add session._id to me._id.sessions[]
+  };
 
   return (
     <div>
@@ -60,9 +64,9 @@ export default function BasicModal(props) {
             Age Group: {props.session.min_age} - {props.session.max_age}
           </Typography>
           <Button onClick={handleSaveSession(props.session._id)}>
-            Sign Up For Session
+            Add Session To Schedule
+            {/* will need user id, and session id.  */}
           </Button>
-          {/* add button to add this session to users profile */}
         </Box>
       </Modal>
     </div>

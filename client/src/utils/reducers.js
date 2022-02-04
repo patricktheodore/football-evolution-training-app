@@ -28,7 +28,7 @@ export const reducer = (state, action) => {
             case ADD_USER_TO_SESSION:
             return {
                 ...state,
-                session: [...action.session]
+                sessions: [...state.sessions, action.session]
             }
         default: 
             return state;    
