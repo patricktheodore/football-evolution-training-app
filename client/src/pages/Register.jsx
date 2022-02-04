@@ -14,6 +14,7 @@ import { useMutation } from '@apollo/client';
 import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 import DatePicker from '../components/DatePicker';
+import moment from 'moment';
 
 function Copyright(props) {
   return (
@@ -36,17 +37,34 @@ export default function SignUp() {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
+
+    console.log({formState});
+
     const mutationResponse = await addUser({
       variables: {
         email: formState.email,
         password: formState.password,
         first_name: formState.firstName,
         last_name: formState.lastName,
+        date_of_birth: formState.dateOfBirth
       },
     });
     const token = mutationResponse.data.addUser.token;
     Auth.login(token);
   };
+
+  function enterDoB(dob){
+
+    // dob is UTC, 
+    // TODO: convert dob to human
+    dob = moment(dob).format('DD/MM/yyyy');
+    setFormState({
+      ...formState,
+      dateOfBirth: dob,
+    })
+
+
+  }
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -109,6 +127,9 @@ export default function SignUp() {
                   autoComplete="email"
                   onChange={handleChange}
                 />
+              </Grid>
+              <Grid item xs={12}>
+                <DatePicker  onValue={enterDoB}/>
               </Grid>
               <Grid item xs={12}>
                 <TextField

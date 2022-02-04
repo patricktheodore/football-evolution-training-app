@@ -4,11 +4,15 @@ import DateAdapter from '@mui/lab/AdapterMoment';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import MobileDatePicker from '@mui/lab/MobileDatePicker';
 
-export default function MaterialUIPickers() {
+export default function MaterialUIPickers(props) {
   const [value, setValue] = React.useState(new Date('2014-08-18T21:11:54'));
 
   const handleChange = (newValue) => {
     setValue(newValue);
+
+    if(props.onValue){
+      props.onValue(newValue)
+    }
   };
 
   return (

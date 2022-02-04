@@ -44,6 +44,8 @@ const userSchema = new mongoose.Schema({
     stats: [statsSchema]
 });
 
+// getter function to formate date. 
+
 // set up pre-save middleware to create password
 userSchema.pre('save', async function (next) {
     if (this.isNew || this.isModified('password')) {
