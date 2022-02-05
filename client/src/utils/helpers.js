@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 export function getOverall(stats) {
     let array = [];
 
@@ -34,6 +36,10 @@ export function initialize(user) {
     //return A+B 
 }
 
-export function animateCircle() {
-    
+export function getAge(date) {
+    let result = moment(date, "DD/MM/yyyy").fromNow(true);
+
+    let age = result.slice(0, 2)
+
+    return age
 }

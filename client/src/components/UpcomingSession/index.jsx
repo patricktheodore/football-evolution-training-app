@@ -4,9 +4,7 @@ import { REMOVE_USER_FROM_SESSION } from '../../utils/mutations';
 import { useQuery, useMutation } from '@apollo/client';
 import { Button } from '@mui/material';
 import { useState } from 'react';
-import Auth from '../../utils/auth';
 import { useEffect } from 'react';
-import SessionCard from '../SessionCard';
 
 const UpcomingSession = (props) => {
   
@@ -14,6 +12,9 @@ const UpcomingSession = (props) => {
   const { loading, data, error } = useQuery(QUERY_SESSION, {
     variables: { id: sessionId }
   });
+
+  const { data: me } = useQuery(GET_ME);
+
   const [sessionData, setSessionData] = useState({});
   const [removeUserFromSession, { err }] = useMutation(REMOVE_USER_FROM_SESSION);
 
@@ -27,7 +28,6 @@ const UpcomingSession = (props) => {
   const handleRemoveSession = async () => {
 
     try {
-
       const result = await removeUserFromSession({
         variables: {
           sessionId: sessionId
@@ -43,15 +43,12 @@ const UpcomingSession = (props) => {
   if (error) return <div>Error</div>
   
 
-  // console.log(sessionData);
-
   if (sessionData) {
     return (
       <div>
         <h4>{sessionData.title}</h4>
         <h4>
           {sessionData.long_desc}
-          hi
         </h4>
         <Button
         onClick={handleRemoveSession}>
@@ -63,7 +60,7 @@ const UpcomingSession = (props) => {
 }
 
 
-      export default UpcomingSession;
+export default UpcomingSession;
 
 
 

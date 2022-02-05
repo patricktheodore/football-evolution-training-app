@@ -38,18 +38,21 @@ export default function AccountMenu() {
 
 
   const { loading, data } = useQuery(GET_ME);
-  
+
   const user = data?.me || {};
 
   const isCoach = () => {
     if (user.is_coach) {
       return (
         <MenuItem>
-        <ListItemIcon>
-          <VerifiedUserSharpIcon fontSize="small" />
-        </ListItemIcon>
-        Dashboard
-      </MenuItem>
+          <ListItemIcon>
+            <VerifiedUserSharpIcon fontSize="small" />
+          <Link to="/adminDash">
+            Dashboard
+          </Link>
+          </ListItemIcon>
+
+        </MenuItem>
       )
     } else {
       return
@@ -117,6 +120,7 @@ export default function AccountMenu() {
           </ListItemIcon>
         </MenuItem>
         {isCoach()}
+        <Divider />
         <MenuItem onClick={logout}>
           <ListItemIcon>
             <ExitToAppSharpIcon fontSize="small" />

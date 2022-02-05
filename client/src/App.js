@@ -18,6 +18,8 @@ import Profile from './pages/Profile';
 import TrainWithUs from './pages/TrainWithUs';
 import SessionDetails from './pages/SessionDetails';
 import Account from './pages/Account';
+import AdminDash from './pages/AdminDash';
+import Player from './pages/Player';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -53,7 +55,9 @@ function App() {
               <Route exact path="/profile" element={<Profile/>} />
               <Route exact path="/trainWithUs" element={<TrainWithUs />} />
               <Route exact path="/sessions/:id" element={<SessionDetails/>} />
+              <Route exact path="/player/:id" element={<Player/>} />
               <Route exact path="/account" element={<Account/>} />
+              <Route exact path="/adminDash" element={<AdminDash />} />
               <Route element={<NoMatch/>} />
             </Routes>
           </StoreProvider>
