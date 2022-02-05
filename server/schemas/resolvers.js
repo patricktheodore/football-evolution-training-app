@@ -59,7 +59,7 @@ const resolvers = {
 
             const stats = await User.findOneAndUpdate(
                 { _id: args._id },
-                { $set: { stats: args.input } },
+                { $set: { stats: args } },
                 { new: true }
             );
             return stats;

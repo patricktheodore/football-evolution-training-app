@@ -29,6 +29,7 @@ function StatsDisplay(props) {
             <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Shooting</TableCell>
             <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Passing</TableCell>
             <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Dribbling</TableCell>
+            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Defending</TableCell>
             <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Physicality</TableCell>
             <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Skills</TableCell>
             <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Weak Foot</TableCell>
@@ -42,6 +43,7 @@ function StatsDisplay(props) {
             <TableCell align="center">{props.user.last_name}</TableCell>
             <TableCell align="center">{props.user.preffered_position}</TableCell>
             <TableCell align="center">{props.user.preffered_foot}</TableCell>
+            <TableCell align="center">0</TableCell>
             <TableCell align="center">0</TableCell>
             <TableCell align="center">0</TableCell>
             <TableCell align="center">0</TableCell>
@@ -76,6 +78,7 @@ function StatsDisplay(props) {
             <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Shooting</TableCell>
             <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Passing</TableCell>
             <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Dribbling</TableCell>
+            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Defending</TableCell>
             <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Physicality</TableCell>
             <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Skills</TableCell>
             <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Weak Foot</TableCell>
@@ -91,6 +94,7 @@ function StatsDisplay(props) {
             <TableCell align="center">{props.user.preffered_foot}</TableCell>
             <TableCell align="center">{props.user.stats[0].pace}</TableCell>
             <TableCell align="center">{props.user.stats[0].shooting}</TableCell>
+            <TableCell align="center">{props.user.stats[0].passing}</TableCell>
             <TableCell align="center">{props.user.stats[0].dribbling}</TableCell>
             <TableCell align="center">{props.user.stats[0].defending}</TableCell>
             <TableCell align="center">{props.user.stats[0].physicality}</TableCell>

@@ -85,7 +85,7 @@ const typeDefs = gql`
         updateUser (first_name: String, last_name: String, preffered_position: String, preffered_foot: String): Auth
         addCoach (first_name: String!, last_name: String!, email:String!, password:String!, is_coach:Boolean=false): User!
         addSession (input: SessionInput) : Session!
-        saveStats (_id: ID!, input: StatsInput) : User!
+        saveStats(_id: ID!, pace: String, shooting: String, passing: String, dribbling: String, defending: String, physicality: String, skills: String, weak_foot_ability: String, tactical: String, psychological: String): User
         addUserToSession (sessionId: ID): User!
         removeUserFromSession (sessionId: ID): User!
         updateSession (sessionId: ID, input: SessionInput): Session!

@@ -68,11 +68,20 @@ export const ADD_SESSION = gql`
 `;
 
 export const SAVE_STATS = gql`
-    mutation saveStats($id: ID!, $input: StatsInput) {
-        saveStats(_id: $id, input: $input) {
+    mutation saveStats($id: ID!, $pace: String, $shooting: String, $passing: String, $dribbling: String, $defending: String, $physicality: String, $skills: String, $weak_foot_ability: String, $tactical: String, $psychological: String) {
+        saveStats(_id: $id, pace: $pace, shooting: $shooting, passing: $passing, dribbling: $dribbling, defending: $defending, physicality: $physicality, skills: $skills, weak_foot_ability: $weak_foot_ability, tactical: $tactical, psychological: $psychological) {
           first_name
           stats {
-            preffered_position
+            pace
+            shooting
+            passing
+            dribbling
+            defending
+            physicality
+            skills
+            weak_foot_ability
+            tactical
+            psychological
           }
         }
       }
