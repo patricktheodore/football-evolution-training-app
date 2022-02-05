@@ -35,15 +35,18 @@ export const ADD_USER = gql`
 `;
 
 export const UPDATE_USER = gql`
-    mutation UpdateUser($firstName: String, $lastName: String, $dateOfBirth: String, $isCoach: Boolean, $preffered_position: String!) {
-        updateUser(first_name: $firstName, last_name: $lastName, date_of_birth: $dateOfBirth, is_coach: $isCoach, preffered_position: $preffered_position) {
-          _id
+    mutation UpdateUser($first_name: String, $last_name: String, $preffered_position: String, $preffered_foot: String) {
+        updateUser(first_name: $first_name, last_name: $last_name, preffered_position: $preffered_position, preffered_foot: $preffered_foot) {
+          token
+          user {
+            _id
           first_name
           last_name
           date_of_birth
           is_coach
           preffered_foot
           preffered_position
+          }
         }
       }
 `;

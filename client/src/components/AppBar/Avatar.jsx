@@ -35,6 +35,8 @@ export default function AccountMenu() {
     Auth.logout()
   };
 
+
+
   const { loading, data } = useQuery(GET_ME);
   
   const user = data?.me || {};
@@ -111,9 +113,8 @@ export default function AccountMenu() {
         <Divider />
         <MenuItem>
           <ListItemIcon>
-            <SettingsApplicationsSharpIcon fontSize="small" />
+            <SettingsApplicationsSharpIcon fontSize="small" /> <Link to="/account">Settings</Link>
           </ListItemIcon>
-          Settings
         </MenuItem>
         {isCoach()}
         <MenuItem onClick={logout}>

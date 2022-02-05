@@ -33,8 +33,16 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
-  const [formState, setFormState] = useState({ email: '', password: '' });
-  const [addUser] = useMutation(ADD_USER);
+  const [formState, setFormState] = useState({ 
+    firstName: '', 
+    lastName: '', 
+    email: '', 
+    password: '',
+    dateOfBirth: '',
+    preffered_foot:'',
+    preffered_position: '' });
+  
+    const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -102,7 +110,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="firstName"
-                  label="First Name"
+                  label="Given Names"
                   autoFocus
                   onChange={handleChange}
                 />
@@ -112,7 +120,7 @@ export default function SignUp() {
                   required
                   fullWidth
                   id="lastName"
-                  label="Last Name"
+                  label="Family Name"
                   name="lastName"
                   autoComplete="family-name"
                   onChange={handleChange}

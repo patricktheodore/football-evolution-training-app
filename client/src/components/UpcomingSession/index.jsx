@@ -1,56 +1,71 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import React from 'react';
-import { QUERY_SESSION } from '../../utils/queries';
+import { GET_ME, QUERY_SESSION } from '../../utils/queries';
 import { REMOVE_USER_FROM_SESSION } from '../../utils/mutations';
 import { useQuery, useMutation } from '@apollo/client';
-import { Button } from '@mui/material'
+import { Button } from '@mui/material';
+import { useState } from 'react';
+import Auth from '../../utils/auth';
+import { useEffect } from 'react';
+import SessionCard from '../SessionCard';
 
-const UpcomingSession = (id) => {
+const UpcomingSession = (props) => {
   
-  const { loading, data } = useQuery(QUERY_SESSION, {
-    variables: {
-       _id: id 
-      },
+  const sessionId = props.sessionId;
+  const { loading, data, error } = useQuery(QUERY_SESSION, {
+    variables: { id: sessionId }
   });
+  const [sessionData, setSessionData] = useState({});
+  const [removeUserFromSession, { err }] = useMutation(REMOVE_USER_FROM_SESSION);
 
-  const session = data?.session;
+  useEffect(() => {
+    if (data) {
+      setSessionData({...data.session})
+    }
+  }, [data])
   
-  console.log(session);
+  
+  const handleRemoveSession = async () => {
 
-  const [removeUserFromSession, {error}] = useMutation(REMOVE_USER_FROM_SESSION);
+    try {
+
+      const result = await removeUserFromSession({
+        variables: {
+          sessionId: sessionId
+        }
+      });
+      console.log({ result });
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  
+  if (loading) return <div>Loading</div>
+  if (error) return <div>Error</div>
   
 
-  async function handleRemoveSession(event) {
-    event.preventDefault();
+  // console.log(sessionData);
 
-    const result = await removeUserFromSession({
-      variables: {
-        sessionId: id
-      }
-    });
-    console.log({result});
-  }
-
-  return (
-    <div>
-            {session && (
-
-                <div>
-                    <h4>{session.title}</h4>
-                    <h4>
-                        {session.long_desc}
-
-                    </h4>
-                    <Button
-                    onClick={handleRemoveSession}>
-                            add to my schedule
-                    </Button>
-                </div>
-            )}
-
-        </div>
-  )
-
+  if (sessionData) {
+    return (
+      <div>
+        <h4>{sessionData.title}</h4>
+        <h4>
+          {sessionData.long_desc}
+          hi
+        </h4>
+        <Button
+        onClick={handleRemoveSession}>
+          Remove
+        </Button>
+      </div>
+      )
+    }
 }
 
-export default UpcomingSession;
+
+      export default UpcomingSession;
+
+
+
+
+

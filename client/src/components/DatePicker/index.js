@@ -1,11 +1,13 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
 import DateAdapter from '@mui/lab/AdapterMoment';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 import MobileDatePicker from '@mui/lab/MobileDatePicker';
+import { useQuery } from '@apollo/client';
+import { GET_ME } from '../../utils/queries';
 
 export default function MaterialUIPickers(props) {
-  const [value, setValue] = React.useState(new Date('2014-08-18T21:11:54'));
+  const [value, setValue] = useState(new Date('05-03-1994'));
 
   const handleChange = (newValue) => {
     setValue(newValue);

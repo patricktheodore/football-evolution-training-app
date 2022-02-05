@@ -112,7 +112,9 @@ const resolvers = {
                     { new: true }, 
                 );
 
-                return user;
+                const token = signToken(user)
+
+                return { token, user };
             } else {
                 throw new AuthenticationError('You must be logged in to do this!')
             }

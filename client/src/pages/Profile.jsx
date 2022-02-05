@@ -4,10 +4,12 @@ import { useQuery } from '@apollo/client';
 import StatsDisplay from "../components/StatsDisplay";
 import Container from '@mui/material/Container';
 import UpcomingSession from '../components/UpcomingSession';
-import { QUERY_USER, GET_ME } from '../utils/queries';
+import { QUERY_USER, GET_ME, QUERY_SESSION } from '../utils/queries';
 import Auth from '../utils/auth';
 import { Typography } from '@mui/material';
 import { getOverall } from '../utils/helpers';
+import { useState } from 'react';
+import { useEffect } from 'react';
 
 const Profile = () => {
     const { _id: userParam } = useParams();
@@ -28,28 +30,31 @@ const Profile = () => {
 
     if (!user?._id) {
         return (
-            <Typography sx= {{ mt: 15}}>
-            You need to be logged in to see this. Use the navigation links above to
-            sign up or log in!
-          </Typography>
+            <Typography sx={{ mt: 15 }}>
+                You need to be logged in to see this. Use the navigation links above to
+                sign up or log in!
+            </Typography>
         );
     }
 
     return (
-        <Container maxWidth="xl" sx={{ mt: 15}}>
-            <h2>
-                {userParam ? `${user.first_name}'s` : 'your'} profile.
-            </h2>
-            <StatsDisplay user={user}/>
-            <Typography>
-                Your Sessions
-            </Typography>
-            <UpcomingSession id={user.sessions[0]._id} />
-
-            {/* {user.sessions.map((session) => (
-                // console.log(session._id)
-                <UpcomingSession id={session._id} key={session._id}/>
-            ))}     */}
+        <Container maxWidth="xl" sx={{ mt: 15 }}>
+            {user && (
+                <div>
+                    <h2>
+                        {userParam ? `${user.first_name}'s` : 'your'} profile.
+                    </h2>
+                    <Link to={"/account"}> Update Info
+                    </Link>
+                    <StatsDisplay user={user} />
+                    <Typography>
+                        Your Sessions
+                    </Typography>
+                    {user.sessions.map((session) => {
+                        return <UpcomingSession sessionId={session._id} key={session._id} />
+                    })}
+                </div>
+            )}
         </Container>
     );
 }
