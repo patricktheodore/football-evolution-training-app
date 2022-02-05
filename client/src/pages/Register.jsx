@@ -15,7 +15,7 @@ import Auth from '../utils/auth';
 import { ADD_USER } from '../utils/mutations';
 import DatePicker from '../components/DatePicker';
 import moment from 'moment';
-import { Radio, RadioGroup, FormControlLabel, FormLabel } from '@mui/material'
+import { Radio, RadioGroup, FormControlLabel, FormLabel, InputLabel, MenuItem, Select, FormControl, Divider } from '@mui/material'
 
 function Copyright(props) {
   return (
@@ -118,6 +118,65 @@ export default function SignUp() {
                   onChange={handleChange}
                 />
               </Grid>
+              <Grid item xs={12} sm={6}>
+                <DatePicker onValue={enterDoB} />
+              </Grid>
+              <Grid item xs={12} sm={6}>
+                <FormControl fullWidth>
+
+                  <InputLabel id="preffered_position">Preffered Position</InputLabel>
+                  <Select
+                    labelId="preffered_position"
+                    name="preffered_position"
+                    id="preffered_position"
+                    label="preffered_position"
+                    value={formState.preffered_position}
+                    onChange={handleChange}
+                  >
+                    <MenuItem value="GK">Goalkeeper</MenuItem>
+                    <Divider />
+                    <MenuItem value="DEF">Defender</MenuItem>
+                    <MenuItem value="CB">Center Back</MenuItem>
+                    <MenuItem value="RB">Right Back</MenuItem>
+                    <MenuItem value="RWB">Right Wing Back</MenuItem>
+                    <MenuItem value="LB">Left Back</MenuItem>
+                    <MenuItem value="LWB">Left Wing Back</MenuItem>
+                    <Divider />
+                    <MenuItem value="MID">Midfielder</MenuItem>
+                    <MenuItem value="CM">Central Midfielder</MenuItem>
+                    <MenuItem value="CAM">Defensive Midfielder</MenuItem>
+                    <MenuItem value="CDM">Attacking Midfielder</MenuItem>
+                    <MenuItem value="RM">Right Midfielder</MenuItem>
+                    <MenuItem value="LF">Left Midfielder</MenuItem>
+                    <Divider />
+                    <MenuItem value="FWD">Forward</MenuItem>
+                    <MenuItem value="ST">Striker</MenuItem>
+                    <MenuItem value="CF">Center Forward</MenuItem>
+                    <MenuItem value="RF">Right Forward</MenuItem>
+                    <MenuItem value="RW">Right Wing</MenuItem>
+                    <MenuItem value="LF">Left Forward</MenuItem>
+                    <MenuItem value="LW">Left Wing</MenuItem>
+                  </Select>
+                </FormControl>
+              </Grid>
+              <Grid item xs={12} >
+                <FormControl fullWidth sx={{ textAlign: 'center', justifyContent: 'center' }}>
+                  <FormLabel id="preffered_foot">Preffered Foot</FormLabel>
+                  <RadioGroup
+                    row
+                    aria-labelledby="preffered_foot"
+                    name="preffered_foot"
+                    label="preffered_foot"
+                    id="preffered_foot"
+                    onChange={handleChange}
+                    sx={{ textAlign: 'center', justifyContent: 'center' }}
+                  >
+                    <FormControlLabel value="Left" control={<Radio color="success" />} label="Left" />
+                    <FormControlLabel value="Right" control={<Radio color="success" />} label="Right" />
+                    <FormControlLabel value="Both" control={<Radio color="success" />} label="Both" />
+                  </RadioGroup>
+                </FormControl>
+              </Grid>
               <Grid item xs={12}>
                 <TextField
                   required
@@ -129,25 +188,6 @@ export default function SignUp() {
                   onChange={handleChange}
                 />
               </Grid>
-              <Grid item xs={12}>
-                <DatePicker onValue={enterDoB} />
-              </Grid>
-              <Grid item xs={12}>
-                <FormLabel id="preffered_foot">Preffered Foot</FormLabel>
-                <RadioGroup
-                  row
-                  aria-labelledby="preffered_foot"
-                  name="preffered_foot"
-                  label="preffered_foot"
-                  id="preffered_foot"
-                  onChange={handleChange}
-                >
-                  <FormControlLabel value="Left" control={<Radio color="success"/>} label="Left" />
-                  <FormControlLabel value="Right" control={<Radio color="success"/>} label="Right" />
-                  <FormControlLabel value="Both" control={<Radio color="success"/>} label="Both" />
-                </RadioGroup>
-              </Grid>
-              {/* insert preffered position select component here */}
               <Grid item xs={12}>
                 <TextField
                   required

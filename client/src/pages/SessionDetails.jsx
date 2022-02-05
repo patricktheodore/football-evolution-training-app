@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from '@apollo/client';
 import { Button } from '@mui/material';
 import React from 'react';
-import { useParams, useRoutes } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { ADD_USER_TO_SESSION } from '../utils/mutations';
 import { GET_ME, QUERY_SESSION } from '../utils/queries';
 
@@ -16,8 +16,6 @@ export default function SessionDetails() {
     });
 
     const { data: userData } = useQuery(GET_ME);
-
-    
     
     const [addUserToSession, {error}] = useMutation(ADD_USER_TO_SESSION)
     

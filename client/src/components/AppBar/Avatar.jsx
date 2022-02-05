@@ -36,6 +36,7 @@ export default function AccountMenu() {
   };
 
   const { loading, data } = useQuery(GET_ME);
+  
   const user = data?.me || {};
 
   const isCoach = () => {

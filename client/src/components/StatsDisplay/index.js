@@ -15,7 +15,8 @@ function StatsDisplay(props) {
     return (
       <TableContainer component={Paper}>
       <Typography>
-        overall rating: 0
+        Current Rating: 0 | 
+        Waiting on Coach Feedback
       </Typography>
       <Table aria-label="simple table">
         <TableHead>
@@ -37,10 +38,10 @@ function StatsDisplay(props) {
         </TableHead>
         <TableBody>
           <TableRow>
-            <TableCell align="center">0</TableCell>
-            <TableCell align="center">0</TableCell>
-            <TableCell align="center">0</TableCell>
-            <TableCell align="center">0</TableCell>
+            <TableCell align="center">{props.user.first_name}</TableCell>
+            <TableCell align="center">{props.user.last_name}</TableCell>
+            <TableCell align="center">{props.user.preffered_position}</TableCell>
+            <TableCell align="center">{props.user.preffered_foot}</TableCell>
             <TableCell align="center">0</TableCell>
             <TableCell align="center">0</TableCell>
             <TableCell align="center">0</TableCell>
@@ -86,8 +87,8 @@ function StatsDisplay(props) {
           <TableRow>
             <TableCell align="center">{props.user.first_name}</TableCell>
             <TableCell align="center">{props.user.last_name}</TableCell>
-            <TableCell align="center">{props.user.stats[0].preffered_position}</TableCell>
-            <TableCell align="center">{props.user.stats[0].preffered_foot}</TableCell>
+            <TableCell align="center">{props.user.preffered_position}</TableCell>
+            <TableCell align="center">{props.user.preffered_foot}</TableCell>
             <TableCell align="center">{props.user.stats[0].pace}</TableCell>
             <TableCell align="center">{props.user.stats[0].shooting}</TableCell>
             <TableCell align="center">{props.user.stats[0].dribbling}</TableCell>

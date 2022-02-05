@@ -86,17 +86,6 @@ export const ADD_USER_TO_SESSION = gql`
       }
 `;
 
-export const ADD_SESSION_TO_USER = gql`
-    mutation AddSessionToUser($sessionId: ID) {
-        addSessionToUser(sessionId: $sessionId) {
-          _id
-          sessions {
-            _id
-          }
-        }
-      }
-`;
-
 export const REMOVE_USER_FROM_SESSION = gql`
     mutation RemoveUserFromSession($sessionId: ID) {
         removeUserFromSession(sessionId: $sessionId) {
