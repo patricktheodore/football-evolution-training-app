@@ -4,12 +4,10 @@ import { useQuery } from '@apollo/client';
 import StatsDisplay from "../components/StatsDisplay";
 import Container from '@mui/material/Container';
 import UpcomingSession from '../components/UpcomingSession';
-import { QUERY_USER, GET_ME, QUERY_SESSION } from '../utils/queries';
+import { QUERY_USER, GET_ME } from '../utils/queries';
 import Auth from '../utils/auth';
-import { Typography } from '@mui/material';
-import { getOverall } from '../utils/helpers';
-import { useState } from 'react';
-import { useEffect } from 'react';
+import { Button, Grid, Stack, Typography } from '@mui/material';
+import PlayerRating from '../components/StatsDisplay/PlayerRating';
 
 const Profile = () => {
     const { _id: userParam } = useParams();
@@ -38,22 +36,26 @@ const Profile = () => {
     }
 
     return (
-        <Container maxWidth="xl" sx={{ mt: 15 }}>
+        <Container maxWidth="xl" sx={{ mt: 15, mb: 10 }}>
             {user && (
-                <div>
-                    <h2>
-                        {userParam ? `${user.first_name}'s` : 'your'} profile.
-                    </h2>
-                    <Link to={"/account"}> Update Info
-                    </Link>
-                    <StatsDisplay user={user} />
-                    <Typography>
-                        Your Sessions
+                <Container>
+                    <Stack direction="column" spacing={0} sx={{ alignItems: 'center', mb: 10 }}>
+                        <Typography sx={{ mb: 1 }} variant="h4" component="div" align='center'>
+                            {userParam ? `${user.first_name}'s` : 'Your'} Profile
+                        </Typography >
+                        <Button href={"/account"} variant="primary" sx={{ width: '10rem' }}> Update Details</Button>
+                    </Stack>
+                    <Grid container spacing={2} align={'center'}>
+                        <StatsDisplay user={user} />
+                        <PlayerRating user={user} />
+                    </Grid>
+                    <Typography align='center' variant='h4' sx={{ mt: 10 }}>
+                        Upcoming Sessions
                     </Typography>
                     {user.sessions.map((session) => {
                         return <UpcomingSession sessionId={session._id} key={session._id} />
                     })}
-                </div>
+                </Container>
             )}
         </Container>
     );

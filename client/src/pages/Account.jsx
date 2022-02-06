@@ -13,12 +13,13 @@ import DatePicker from '../components/DatePicker';
 const theme = createTheme();
 
 const Account = () => {
-  const [formState, setFormState] = useState({ 
-    firstName: '', 
-    lastName: '', 
-    preffered_foot:'',
-    preffered_position: '' });  
-    
+  const [formState, setFormState] = useState({
+    firstName: '',
+    lastName: '',
+    preffered_foot: '',
+    preffered_position: ''
+  });
+
   const [updateUser] = useMutation(UPDATE_USER);
 
   const handleFormSubmit = async (event) => {
@@ -47,15 +48,15 @@ const Account = () => {
   };
 
   const { loading, data } = useQuery(GET_ME)
-  
+
   const user = data?.me || {};
 
   useEffect(() => {
     if (data) {
-      setFormState({...user})
+      setFormState({ ...user })
     }
   }, [data, user])
-  
+
   if (loading) {
     return <div>Loading</div>
   }
@@ -63,8 +64,8 @@ const Account = () => {
   if (!user?._id) {
     return (
       <Typography sx={{ mt: 15 }}>
-          You need to be logged in to see this. Use the navigation links above to
-          sign up or log in!
+        You need to be logged in to see this. Use the navigation links above to
+        sign up or log in!
       </Typography>
     );
   }
@@ -76,19 +77,21 @@ const Account = () => {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 8,
+            marginTop: 6,
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
           }}
         >
-          <Typography component="h1" variant="h5">
+          <Typography variant="h5" sx={{ fontWeight: 'light' }}>
             Update Your Details
           </Typography>
           <Box component="form" noValidate onSubmit={handleFormSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
+                  inputProps={{ style: { fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
+                  InputLabelProps={{ style: { fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
                   autoComplete="given-name"
                   name="firstName"
                   fullWidth
@@ -101,6 +104,8 @@ const Account = () => {
               </Grid>
               <Grid item xs={12}>
                 <TextField
+                  inputProps={{ style: { fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
+                  InputLabelProps={{ style: { fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
                   fullWidth
                   id="lastName"
                   label="Family Name"
@@ -110,9 +115,8 @@ const Account = () => {
                   onChange={handleChange}
                 />
               </Grid>
-              <Grid item xs={12}>
+              <Grid item xs={12} sx={{ mb: 2 }}>
                 <FormControl fullWidth>
-
                   <InputLabel id="preffered_position">{user.preffered_position}</InputLabel>
                   <Select
                     labelId="preffered_position"
@@ -148,7 +152,7 @@ const Account = () => {
                   </Select>
                 </FormControl>
               </Grid>
-              <Grid item xs={12} >
+              <Grid item xs={12} sx={{ mb: 2 }}>
                 <FormControl fullWidth sx={{ textAlign: 'center', justifyContent: 'center' }}>
                   <FormLabel id="preffered_foot">Preffered Foot</FormLabel>
                   <RadioGroup
@@ -169,7 +173,9 @@ const Account = () => {
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                disabled
+                  inputProps={{ style: { fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
+                  InputLabelProps={{ style: { fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
+                  disabled
                   required
                   fullWidth
                   id="email"
@@ -181,19 +187,18 @@ const Account = () => {
               </Grid>
             </Grid>
             <Button
-            size='large'
+              size='large'
               type="submit"
               fullWidth
               variant="contained"
-              color='success'
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, backgroundColor: '#07c400', '&:hover': { backgroundColor: '#047a00'} }}
             >
               Update
             </Button>
             <Button
               href="/profile"
               fullWidth
-              sx={{ mt: 3, mb: 2 }}
+              sx={{ mt: 3, mb: 2, color: '#171717' }}
             >
               Back To Profile
             </Button>

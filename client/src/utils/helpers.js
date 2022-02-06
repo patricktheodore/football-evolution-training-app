@@ -36,6 +36,12 @@ export function initialize(user) {
     //return A+B 
 }
 
+export function formatDate(date) {
+    let result = moment(date, 'DD/MM/yyyy')
+
+    return result
+}
+
 export function getAge(date) {
     let result = moment(date, "DD/MM/yyyy").fromNow(true);
 

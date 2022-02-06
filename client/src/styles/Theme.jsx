@@ -38,7 +38,27 @@ const theme = createTheme({
                             backgroundColor: "#e8e8e8",
                         },
                         height: '2rem'
-                    }
+                    },
+                    props: {variant: 'secondary'},
+                    style: {
+                        backgroundColor: '#404040',
+                        color: 'white',
+                        '&:hover': {
+                            backgroundColor: "#07c400",
+                            color: "white",
+                        },
+                        height: '2rem'
+                    },
+                    props: {variant: 'delete'},
+                    style: {
+                        backgroundColor: '#404040',
+                        color: 'white',
+                        '&:hover': {
+                            backgroundColor: "#cc1818",
+                            color: "white",
+                        },
+                        height: '2rem'
+                    },
                 }
             ]
         },

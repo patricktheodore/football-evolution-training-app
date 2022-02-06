@@ -1,111 +1,102 @@
 import React from 'react';
-import Table from '@mui/material/Table';
-import TableBody from '@mui/material/TableBody';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
 import { getOverall } from '../../utils/helpers';
-import { Typography } from '@mui/material';
+import { Card, CardContent, Stack, Typography } from '@mui/material';
+import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import { getAge } from '../../utils/helpers';
 
 
 function StatsDisplay(props) {
   if (!props.user.stats[0]) {
     return (
-      <TableContainer component={Paper}>
-      <Typography>
-        Current Rating: 0 | 
-        Waiting on Coach Feedback
-      </Typography>
-      <Table aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>First Name</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Last Name</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Preferred Position</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Preferred Foot</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Pace</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Shooting</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Passing</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Dribbling</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Defending</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Physicality</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Skills</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Weak Foot</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Tactical</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Psychological</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            <TableCell align="center">{props.user.first_name}</TableCell>
-            <TableCell align="center">{props.user.last_name}</TableCell>
-            <TableCell align="center">{props.user.preffered_position}</TableCell>
-            <TableCell align="center">{props.user.preffered_foot}</TableCell>
-            <TableCell align="center">0</TableCell>
-            <TableCell align="center">0</TableCell>
-            <TableCell align="center">0</TableCell>
-            <TableCell align="center">0</TableCell>
-            <TableCell align="center">0</TableCell>
-            <TableCell align="center">0</TableCell>
-            <TableCell align="center">0</TableCell>
-            <TableCell align="center">0</TableCell>
-            <TableCell align="center">0</TableCell>
-            <TableCell align="center">0</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </TableContainer>
+      <Grid item xs={12} lg={8} sx={{ justifyContent: 'center' }} align="center">
+        <Card sx={{ flexGrow: 1, borderRadius: 3, minHeight: 440, mx: 2.5 }}>
+          <CardContent sx={{ justifyContent: 'center' }} align='center'>
+            <Stack direction={'column'}>
+              <Typography variant="h4" align='center'>{`${props.user.first_name} ${props.user.last_name}`}</Typography>
+              <Typography>Preffered Foot: {props.user.preffered_foot} | Preffered Position: {props.user.preffered_position}</Typography>
+            </Stack>
+            <Typography variant="h4" align='center'>Waiting On Coach Feedback</Typography>
+          </CardContent>
+        </Card>
+      </Grid>
     )
   }
 
 
   return (
-    <TableContainer component={Paper}>
-      <Typography>
-        overall rating: {getOverall(props.user.stats[0])}
-
-      </Typography>
-      <Table aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>First Name</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Last Name</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Preferred Position</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Preferred Foot</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Pace</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Shooting</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Passing</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Dribbling</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Defending</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Physicality</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Skills</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Weak Foot</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Tactical</TableCell>
-            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Psychological</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          <TableRow>
-            <TableCell align="center">{props.user.first_name}</TableCell>
-            <TableCell align="center">{props.user.last_name}</TableCell>
-            <TableCell align="center">{props.user.preffered_position}</TableCell>
-            <TableCell align="center">{props.user.preffered_foot}</TableCell>
-            <TableCell align="center">{props.user.stats[0].pace}</TableCell>
-            <TableCell align="center">{props.user.stats[0].shooting}</TableCell>
-            <TableCell align="center">{props.user.stats[0].passing}</TableCell>
-            <TableCell align="center">{props.user.stats[0].dribbling}</TableCell>
-            <TableCell align="center">{props.user.stats[0].defending}</TableCell>
-            <TableCell align="center">{props.user.stats[0].physicality}</TableCell>
-            <TableCell align="center">{props.user.stats[0].skills}</TableCell>
-            <TableCell align="center">{props.user.stats[0].weak_foot_ability}</TableCell>
-            <TableCell align="center">{props.user.stats[0].tactical}</TableCell>
-            <TableCell align="center">{props.user.stats[0].psychological}</TableCell>
-          </TableRow>
-        </TableBody>
-      </Table>
-    </TableContainer>
+    <Grid item xs={12} lg={8} sx={{ justifyContent: 'center' }} align="center">
+      <Card sx={{ flexGrow: 1, borderRadius: 3, minHeight: 440, mx: 2.5 }}>
+        <CardContent sx={{ justifyContent: 'center' }} align='center'>
+          <Stack direction={'column'}>
+            <Typography variant="h4" align='center'>{`${props.user.first_name} ${props.user.last_name}`}</Typography>
+            <Typography sx={{ mt: 1 }}>Preffered Foot: {props.user.preffered_foot} | Preffered Position: {props.user.preffered_position}</Typography>
+            <Typography sx={{ mb: 4 }}>{getAge(props.user.date_of_birth)} Year's Old</Typography>
+          </Stack>
+          <Grid container spacing={2} justifyContent={'center'}>
+            <Grid item xs={6} lg={3}>
+              <Stack direction={'column'}>
+                <Typography variant='h5'>PACE</Typography>
+                <Typography variant="h4">{props.user.stats[0].pace}</Typography>
+              </Stack>
+            </Grid>
+            <Grid item xs={6} lg={3}>
+              <Stack direction={'column'}>
+                <Typography variant='h5'>SHOOTING</Typography>
+                <Typography variant="h4">{props.user.stats[0].shooting}</Typography>
+              </Stack>
+            </Grid>
+            <Grid item xs={6} lg={3}>
+              <Stack direction={'column'}>
+                <Typography variant='h5'>PASSING</Typography>
+                <Typography variant='h4'>{props.user.stats[0].passing}</Typography>
+              </Stack>
+            </Grid>
+            <Grid item xs={6} lg={3}>
+              <Stack direction={'column'}>
+                <Typography variant='h5'>DRIBBLING</Typography>
+                <Typography variant='h4'>{props.user.stats[0].dribbling}</Typography>
+              </Stack>
+            </Grid>
+            <Grid item xs={6} lg={3}>
+              <Stack direction={'column'}>
+                <Typography variant='h5'>DEFENDING</Typography>
+                <Typography variant='h4'>{props.user.stats[0].defending}</Typography>
+              </Stack>
+            </Grid>
+            <Grid item xs={6} lg={3}>
+              <Stack direction={'column'}>
+                <Typography variant='h5'>PHYSICALITY</Typography>
+                <Typography variant='h4'>{props.user.stats[0].physicality}</Typography>
+              </Stack>
+            </Grid>
+            <Grid item xs={6} lg={3}>
+              <Stack direction={'column'}>
+                <Typography variant='h5'>SKILLS</Typography>
+                <Typography variant='h4'>{props.user.stats[0].skills}</Typography>
+              </Stack>
+            </Grid>
+            <Grid item xs={6} lg={3}>
+              <Stack direction={'column'}>
+                <Typography variant='h5'>WEAK FOOT</Typography>
+                <Typography variant='h4'>{props.user.stats[0].weak_foot_ability}</Typography>
+              </Stack>
+            </Grid>
+            <Grid item xs={6} lg={3}>
+              <Stack direction={'column'}>
+                <Typography variant='h5'>TACTICAL</Typography>
+                <Typography variant='h4'>{props.user.stats[0].tactical}</Typography>
+              </Stack>
+            </Grid>
+            <Grid item xs={6} lg={3}>
+              <Stack direction={'column'}>
+                <Typography variant='h5'>PSYCHOLOGICAL</Typography>
+                <Typography variant='h4'>{props.user.stats[0].psychological}</Typography>
+              </Stack>
+            </Grid>
+          </Grid>
+        </CardContent>
+      </Card>
+    </Grid>
   )
 }
 

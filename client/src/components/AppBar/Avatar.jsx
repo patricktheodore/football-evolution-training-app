@@ -81,7 +81,7 @@ export default function AccountMenu() {
           elevation: 0,
           sx: {
             width: 200,
-            overflow: 'visible',
+            textOverflow: 'ellipsis',
             filter: 'drop-shadow(0px 2px 8px rgba(0,0,0,0.32))',
             borderRadius: 3,
             mt: 0,
@@ -117,9 +117,7 @@ export default function AccountMenu() {
           <Link to="/profile" className='menu-link'>Profile</Link>
         </MenuItem>
         <MenuItem>
-          <ListItemIcon>
             <Link to="/account" className='menu-link'>Settings</Link>
-          </ListItemIcon>
         </MenuItem>
         {isCoach()}
         <Divider />
