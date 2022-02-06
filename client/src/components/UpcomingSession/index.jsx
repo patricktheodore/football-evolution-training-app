@@ -13,7 +13,11 @@ const UpcomingSession = (props) => {
     variables: { id: sessionId }
   });
 
-  const { data: me } = useQuery(GET_ME);
+  const { data: user } = useQuery(GET_ME);
+
+  const me = user?.me;
+
+  console.log({me});
 
   const [sessionData, setSessionData] = useState({});
   const [removeUserFromSession, { err }] = useMutation(REMOVE_USER_FROM_SESSION);
@@ -50,10 +54,12 @@ const UpcomingSession = (props) => {
         <h4>
           {sessionData.long_desc}
         </h4>
+        {me.is_coach === true ? '' : 
         <Button
         onClick={handleRemoveSession}>
           Remove
         </Button>
+        }
       </div>
       )
     }

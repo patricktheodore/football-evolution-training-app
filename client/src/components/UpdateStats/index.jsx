@@ -5,8 +5,9 @@ import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { Grid, TextField } from '@mui/material';
 import { useState } from 'react';
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import { SAVE_STATS } from '../../utils/mutations';
+import { QUERY_USER } from '../../utils/queries';
 
 const style = {
     position: 'absolute',
@@ -37,7 +38,6 @@ export default function UpdateStats(props) {
     const [saveStats] = useMutation(SAVE_STATS);
 
     const handleFormSubmit = (event) => {
-        event.preventDefault();
         console.log({ formState });
         saveStats({
             variables: {
@@ -68,7 +68,13 @@ export default function UpdateStats(props) {
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
 
+    const { data: currentUserStats } = useQuery(QUERY_USER, {
+        variables: {
+            id: props.user._id
+        }
+    });
 
+    const playerStats = currentUserStats.user.stats[0]; 
 
     return (
         <div>
@@ -90,7 +96,7 @@ export default function UpdateStats(props) {
                                     name="pace"
                                     fullWidth
                                     id="pace"
-                                    defaultValue={0}
+                                    defaultValue={playerStats ? playerStats.pace : 0}
                                     label="Pace (0-99)"
                                     autoFocus
                                     onChange={handleChange}
@@ -101,7 +107,7 @@ export default function UpdateStats(props) {
                                     name="shooting"
                                     fullWidth
                                     id="shooting"
-                                    defaultValue={0}
+                                    defaultValue={playerStats ? playerStats.shooting : 0}
                                     label="Shooting (0-99)"
                                     autoFocus
                                     onChange={handleChange}
@@ -112,7 +118,7 @@ export default function UpdateStats(props) {
                                     name="passing"
                                     fullWidth
                                     id="passing"
-                                    defaultValue={0}
+                                    defaultValue={playerStats ? playerStats.passing : 0}
                                     label="Passing (0-99)"
                                     autoFocus
                                     onChange={handleChange}
@@ -123,7 +129,7 @@ export default function UpdateStats(props) {
                                     name="dribbling"
                                     fullWidth
                                     id="dribbling"
-                                    defaultValue={0}
+                                    defaultValue={playerStats ? playerStats.dribbling : 0}
                                     label="Dribbling (0-99)"
                                     autoFocus
                                     onChange={handleChange}
@@ -134,7 +140,7 @@ export default function UpdateStats(props) {
                                     name="defending"
                                     fullWidth
                                     id="defending"
-                                    defaultValue={0}
+                                    defaultValue={playerStats ? playerStats.defending : 0}
                                     label="Defending (0-99)"
                                     autoFocus
                                     onChange={handleChange}
@@ -145,7 +151,7 @@ export default function UpdateStats(props) {
                                     name="physicality"
                                     fullWidth
                                     id="physicality"
-                                    defaultValue={0}
+                                    defaultValue={playerStats ? playerStats.physicality : 0}
                                     label="Physicality (0-99)"
                                     autoFocus
                                     onChange={handleChange}
@@ -156,7 +162,7 @@ export default function UpdateStats(props) {
                                     name="skills"
                                     fullWidth
                                     id="skills"
-                                    defaultValue={0}
+                                    defaultValue={playerStats ? playerStats.skills : 0}
                                     label="Skills (0-99)"
                                     autoFocus
                                     onChange={handleChange}
@@ -167,7 +173,7 @@ export default function UpdateStats(props) {
                                     name="weak_foot_ability"
                                     fullWidth
                                     id="weak_foot_ability"
-                                    defaultValue={0}
+                                    defaultValue={playerStats ? playerStats.weak_foot_ability : 0}
                                     label="Weak Foot Ability (0-99)"
                                     autoFocus
                                     onChange={handleChange}
@@ -178,7 +184,7 @@ export default function UpdateStats(props) {
                                     name="tactical"
                                     fullWidth
                                     id="tactical"
-                                    defaultValue={0}
+                                    defaultValue={playerStats ? playerStats.tactical : 0}
                                     label="Tactical (0-99)"
                                     autoFocus
                                     onChange={handleChange}
@@ -189,7 +195,7 @@ export default function UpdateStats(props) {
                                     name="psychological"
                                     fullWidth
                                     id="psychological"
-                                    defaultValue={0}
+                                    defaultValue={playerStats ? playerStats.psychological : 0}
                                     label="Psychological (0-99)"
                                     autoFocus
                                     onChange={handleChange}

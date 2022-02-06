@@ -3,6 +3,9 @@ import { TableRow, TableCell, Button } from '@mui/material';
 import { getAge } from '../../utils/helpers';
 
 export default function PlayerRow(props) {
+
+    console.log(props);
+
     return (
         <TableRow>
             <TableCell align="center">{props.player.first_name}</TableCell>
