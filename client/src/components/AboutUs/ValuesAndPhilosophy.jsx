@@ -4,12 +4,12 @@ import { Card, CardContent, Typography, Grid } from '@mui/material';
 export default function ValuesAndPhilosophy() {
     return (
         <Grid item xs={12} lg={10}>
-            <Card sx={{ flexGrow: 1, minHeight: "15rem" }}>
-                <CardContent>
-                    <Typography sx={{ mb: 1.5, textAlign: "center" }} variant="h5" component="div">
+            <Card sx={{ flexGrow: 1, borderRadius: 3, my: 5 }}>
+                <CardContent sx={{ mx: 4, my: 10 }}>
+                    <Typography sx={{ mb: 5, textAlign: "center" }} variant="h5" component="div">
                         VALUES
                     </Typography>
-                    <Typography variant="body2">
+                    <Typography>
                         At FET we offer a multitude of football specialist services for players ranging from beginners through to
                         elite professionals from around the globe. In addition to our highly reputable sessions held here in Perth,
                         WA we also offer a sophisticated online football platform that allows us to provide our elite services to
@@ -38,12 +38,12 @@ export default function ValuesAndPhilosophy() {
                     </Typography>
                 </CardContent>
             </Card>
-            <Card sx={{ flexGrow: 1, mt: 2 }}>
-                <CardContent>
-                    <Typography sx={{ mb: 1.5, textAlign: "center" }} variant="h5" component="div">
+            <Card sx={{ flexGrow: 1, my: 10, borderRadius: 3 }}>
+                <CardContent sx={{ mx: 4, my: 10 }}>
+                    <Typography sx={{ mb: 5, textAlign: "center" }} variant="h5" component="div">
                         PHILOSOPHIES
                     </Typography>
-                    <Typography variant="body2">
+                    <Typography>
                         Our Philosophy is to improve the development/performance of players and coaches through our unique professional 
                         standard private sessions, programs and online training platforms. We aim to inspire our players through our 
                         professional coaches experiences, knowledge and personalities.

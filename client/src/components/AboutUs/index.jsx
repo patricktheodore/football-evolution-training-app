@@ -8,19 +8,19 @@ import OurStory from './AboutUs';
 
 
 const AboutUs = () => {
-    return (
-        <Container maxWidth="xl">
+  return (
+    <Container maxWidth="xl">
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2} sx={{ justifyContent: "center" }}>
-            <OurStory />
-            <ValuesAndPhilosophy />
+          <OurStory />
+          <ValuesAndPhilosophy />
         </Grid>
       </Box>
     </Container>
 
 
-        
-    );
+
+  );
 };
 
 export default AboutUs;

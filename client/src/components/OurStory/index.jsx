@@ -11,12 +11,12 @@ import Grid from '@mui/material/Grid';
 const OurStory = () => {
     return (
         <Grid item xs={12} lg={8}>
-            <Card sx={{ flexGrow: 1, minHeight: "20rem" }}>
-                <CardContent>
-                    <Typography sx={{ mb: 1.5 }} variant="h5" component="div">
+            <Card sx={{ flexGrow: 1, borderRadius: 3, minHeight: 420 }}>
+                <CardContent sx={{ mx: 10, mt: 10 }} align="justify">
+                    <Typography sx={{ mb: 1.5 }} variant="h5" component="div" align='center'>
                         OUR STORY
                     </Typography>
-                    <Typography variant="body2">
+                    <Typography>
                         FET was created and is managed by Head Coach &#38; Director, Greg Hart who has had
                         the privilege of experiencing elite football in the UK, South America and Australia.
                         <br />
@@ -27,13 +27,11 @@ const OurStory = () => {
                         the best they can be so that they are prepared for all walks of life.
                     </Typography>
                 </CardContent>
-                <CardActions>
-                    <Link to="/ourStory">
-                        <Button size="small">
+                    <CardActions sx={{ justifyContent: 'center' }}>
+                        <Button href="/aboutUs" variant='primary' align="center" sx={{ mb: 10}}>
                             Learn More
                         </Button>
-                    </Link>
-                </CardActions>
+                    </CardActions>
             </Card>
         </Grid>
     );

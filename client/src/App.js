@@ -20,6 +20,8 @@ import SessionDetails from './pages/SessionDetails';
 import Account from './pages/Account';
 import AdminDash from './pages/AdminDash';
 import Player from './pages/Player';
+import { ThemeProvider } from '@mui/material/styles';
+import Theme from './styles/Theme';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -45,22 +47,24 @@ function App() {
     <ApolloProvider client={client}>
       <Router>
         <div>
-          <StoreProvider>
-            <AppBar />
-            <Routes>
-              <Route exact path="/" element={<Home/>} />
-              <Route exact path="/aboutUs" element={<AboutUs />} />
-              <Route exact path="/login" element={<Login/>} />
-              <Route exact path="/register" element={<Register/>} />
-              <Route exact path="/profile" element={<Profile/>} />
-              <Route exact path="/trainWithUs" element={<TrainWithUs />} />
-              <Route exact path="/sessions/:id" element={<SessionDetails/>} />
-              <Route exact path="/player/:id" element={<Player/>} />
-              <Route exact path="/account" element={<Account/>} />
-              <Route exact path="/adminDash" element={<AdminDash />} />
-              <Route element={<NoMatch/>} />
-            </Routes>
-          </StoreProvider>
+          <ThemeProvider theme={Theme}>
+            <StoreProvider>
+              <AppBar />
+              <Routes>
+                <Route exact path="/" element={<Home />} />
+                <Route exact path="/aboutUs" element={<AboutUs />} />
+                <Route exact path="/login" element={<Login />} />
+                <Route exact path="/register" element={<Register />} />
+                <Route exact path="/profile" element={<Profile />} />
+                <Route exact path="/trainWithUs" element={<TrainWithUs />} />
+                <Route exact path="/sessions/:id" element={<SessionDetails />} />
+                <Route exact path="/player/:id" element={<Player />} />
+                <Route exact path="/account" element={<Account />} />
+                <Route exact path="/adminDash" element={<AdminDash />} />
+                <Route element={<NoMatch />} />
+              </Routes>
+            </StoreProvider>
+          </ThemeProvider>
         </div>
       </Router>
     </ApolloProvider>

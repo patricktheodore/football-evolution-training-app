@@ -13,21 +13,20 @@ import { Link } from 'react-router-dom';
 const SessionInfo = () => {
     return (
         <Grid item xs={6} lg={4}>
-            <Card sx={{ minHeight: "20rem" }}>
-                <CardContent>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+            <Card sx={{ flexGrow: 1, borderRadius: 3, minHeight: 420 }}>
+                <CardContent sx={{ mx: 10, mt: 10 }} align="justify">
+                    <Typography sx={{ mb: 1.5 }} variant="h5" align="center">
+                        TRAIN WITH US
                     </Typography>
-                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                    <Typography>
                         We offer a wide range of sessions, dedicated to young and old, players beginning their football
                         journey, and experienced players looking to take their game to the next level.
                     </Typography>
                 </CardContent>
-                <CardActions>
-                    <Link to="/trainWithUs">
-                        <Button size="small">
+                <CardActions sx={{ justifyContent: 'center' }}>
+                        <Button href="/trainWithUs" variant="primary" size="small" sx={{ mb: 10}}>
                             Learn More
                         </Button>
-                    </Link>
                 </CardActions>
             </Card>
         </Grid>

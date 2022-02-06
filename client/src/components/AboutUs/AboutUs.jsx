@@ -8,12 +8,12 @@ import Grid from '@mui/material/Grid';
 export default function AboutUs() {
     return (
         <Grid item xs={12} lg={10}>
-            <Card sx={{ flexGrow: 1, minHeight: "15rem" }}>
-                <CardContent>
-                    <Typography sx={{ mb: 1.5, textAlign: "center" }} variant="h5" component="div">
+            <Card sx={{ flexGrow: 1, borderRadius: 3, my: 5 }} >
+                <CardContent sx={{ mx: 4, my: 10 }}>
+                    <Typography sx={{ textAlign: "center", mb: 5 }} variant="h5" component="div">
                         OUR STORY
                     </Typography>
-                    <Typography variant="body2">
+                    <Typography>
                         FET was created and is managed by Head Coach &#38; Director, Greg Hart who has had
                         the privilege of experiencing elite football in the UK, South America and Australia.
                         <br />
