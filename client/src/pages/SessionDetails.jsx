@@ -54,9 +54,9 @@ export default function SessionDetails() {
                                     </CardActions>
                         }
                         <Typography align='center' variant='h5' sx={{ mt: 10 }}>
-                            Player Signed Up For This Session
+                            Players Signed Up For This Session
                         </Typography>
-                        <TableContainer component={Paper} sx={{ mt:10, mb: 10, minWidth: '80%' }}>
+                        <TableContainer component={Paper} sx={{ mt: 5, mb: 5, minWidth: '80%' }}>
                             <Table aria-label="simple table">
                                 <TableHead>
                                     <TableRow>

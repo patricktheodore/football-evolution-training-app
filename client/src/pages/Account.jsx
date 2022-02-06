@@ -9,6 +9,7 @@ import { Avatar, Button, Link, Grid, TextField, Container, CssBaseline, Box, Rad
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import DatePicker from '../components/DatePicker';
+import appBar from '../styles/appBar.css';
 
 const theme = createTheme();
 
@@ -165,7 +166,7 @@ const Account = () => {
                     onChange={handleChange}
                     sx={{ textAlign: 'center', justifyContent: 'center' }}
                   >
-                    <FormControlLabel value="Left" control={<Radio color="success" />} label="Left" />
+                    <FormControlLabel value="Left" control={<Radio color="success" />} label="Left" className='formLabel'/>
                     <FormControlLabel value="Right" control={<Radio color="success" />} label="Right" />
                     <FormControlLabel value="Both" control={<Radio color="success" />} label="Both" />
                   </RadioGroup>
@@ -191,14 +192,14 @@ const Account = () => {
               type="submit"
               fullWidth
               variant="contained"
-              sx={{ mt: 3, mb: 2, backgroundColor: '#07c400', '&:hover': { backgroundColor: '#047a00'} }}
+              sx={{ mt: 3, mb: 2, backgroundColor: '#07c400', '&:hover': { backgroundColor: '#047a00'}, textTransform: 'none', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif`, fontSize: '1rem' }}
             >
               Update
             </Button>
             <Button
               href="/profile"
               fullWidth
-              sx={{ mt: 3, mb: 2, color: '#171717' }}
+              sx={{ mt: 3, mb: 2, color: '#171717', textTransform: 'none', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif`, fontSize: '1rem' }}
             >
               Back To Profile
             </Button>

@@ -16,7 +16,7 @@ const style = {
     transform: 'translate(-50%, -50%)',
     width: 400,
     bgcolor: 'background.paper',
-    border: '2px solid #000',
+    borderRadius: 3,
     boxShadow: 24,
     p: 4,
 };
@@ -74,11 +74,19 @@ export default function UpdateStats(props) {
         }
     });
 
-    const playerStats = currentUserStats.user.stats[0]; 
+    const playerStats = currentUserStats.user.stats[0];
 
     return (
         <div>
-            <Button onClick={handleOpen}>Update Player Stats</Button>
+            <Button sx={{
+                mt: 2, mb: 5, backgroundColor: '#404040',
+                color: 'white',
+                '&:hover': {
+                    backgroundColor: "#07c400",
+                    color: "white",
+                },
+                height: '2rem', width: '15rem'
+            }} onClick={handleOpen}>Update {props.user.first_name}'s Stats</Button>
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -87,12 +95,14 @@ export default function UpdateStats(props) {
             >
                 <Box sx={style}>
                     <Typography id="modal-modal-title" variant="h6" component="h2">
-                        {props.user.first_name}'s Current Stats
+                        Enter {props.user.first_name}'s Stats
                     </Typography>
                     <Box component="form" noValidate onSubmit={handleFormSubmit} sx={{ mt: 3 }}>
                         <Grid container spacing={2}>
                             <Grid item xs={6}>
                                 <TextField
+                                    inputProps={{ style: { color: 'black', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
+                                    InputLabelProps={{ style: { color: 'black', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
                                     name="pace"
                                     fullWidth
                                     id="pace"
@@ -104,6 +114,8 @@ export default function UpdateStats(props) {
                             </Grid>
                             <Grid item xs={6}>
                                 <TextField
+                                    inputProps={{ style: { color: 'black', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
+                                    InputLabelProps={{ style: { color: 'black', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
                                     name="shooting"
                                     fullWidth
                                     id="shooting"
@@ -115,6 +127,8 @@ export default function UpdateStats(props) {
                             </Grid>
                             <Grid item xs={6}>
                                 <TextField
+                                    inputProps={{ style: { color: 'black', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
+                                    InputLabelProps={{ style: { color: 'black', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
                                     name="passing"
                                     fullWidth
                                     id="passing"
@@ -126,6 +140,8 @@ export default function UpdateStats(props) {
                             </Grid>
                             <Grid item xs={6}>
                                 <TextField
+                                    inputProps={{ style: { color: 'black', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
+                                    InputLabelProps={{ style: { color: 'black', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
                                     name="dribbling"
                                     fullWidth
                                     id="dribbling"
@@ -137,6 +153,8 @@ export default function UpdateStats(props) {
                             </Grid>
                             <Grid item xs={6}>
                                 <TextField
+                                    inputProps={{ style: { color: 'black', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
+                                    InputLabelProps={{ style: { color: 'black', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
                                     name="defending"
                                     fullWidth
                                     id="defending"
@@ -148,6 +166,8 @@ export default function UpdateStats(props) {
                             </Grid>
                             <Grid item xs={6}>
                                 <TextField
+                                    inputProps={{ style: { color: 'black', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
+                                    InputLabelProps={{ style: { color: 'black', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
                                     name="physicality"
                                     fullWidth
                                     id="physicality"
@@ -159,6 +179,8 @@ export default function UpdateStats(props) {
                             </Grid>
                             <Grid item xs={6}>
                                 <TextField
+                                    inputProps={{ style: { color: 'black', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
+                                    InputLabelProps={{ style: { color: 'black', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
                                     name="skills"
                                     fullWidth
                                     id="skills"
@@ -170,6 +192,8 @@ export default function UpdateStats(props) {
                             </Grid>
                             <Grid item xs={6}>
                                 <TextField
+                                    inputProps={{ style: { color: 'black', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
+                                    InputLabelProps={{ style: { color: 'black', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
                                     name="weak_foot_ability"
                                     fullWidth
                                     id="weak_foot_ability"
@@ -181,6 +205,8 @@ export default function UpdateStats(props) {
                             </Grid>
                             <Grid item xs={6}>
                                 <TextField
+                                    inputProps={{ style: { color: 'black', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
+                                    InputLabelProps={{ style: { color: 'black', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
                                     name="tactical"
                                     fullWidth
                                     id="tactical"
@@ -192,6 +218,8 @@ export default function UpdateStats(props) {
                             </Grid>
                             <Grid item xs={6}>
                                 <TextField
+                                    inputProps={{ style: { color: 'black', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
+                                    InputLabelProps={{ style: { color: 'black', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif` } }}
                                     name="psychological"
                                     fullWidth
                                     id="psychological"
@@ -207,8 +235,7 @@ export default function UpdateStats(props) {
                             type="submit"
                             fullWidth
                             variant="contained"
-                            color='success'
-                            sx={{ mt: 3, mb: 2 }}
+                            sx={{ mt: 3, mb: 2, color: 'white', backgroundColor: '#07c400', '&:hover': { backgroundColor: '#047a00' }, textTransform: 'none', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif`, fontSize: '1rem' }}
                         >
                             Update
                         </Button>

@@ -31,7 +31,7 @@ const theme = createTheme({
         MuiButton: {
             variants: [
                 {
-                    props: { variant: 'primary'},
+                    props: { variant: 'primary' },
                     style: {
                         backgroundColor: 'none',
                         '&:hover': {
@@ -61,6 +61,16 @@ const theme = createTheme({
                     },
                 }
             ]
+        },
+        MuiFormControlLabel: {
+            style: {
+                fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif`,
+            }
+        },
+        MuiFormLabel: {
+            style: {
+                fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif`,
+            }
         },
     }
 });

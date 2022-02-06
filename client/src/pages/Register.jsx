@@ -19,7 +19,7 @@ import { Radio, RadioGroup, FormControlLabel, FormLabel, InputLabel, MenuItem, S
 
 function Copyright(props) {
   return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+    <Typography variant="body2" color="text.secondary" align="center" sx={{ mb: 4 }} {...props}>
       {'Copyright © '}
       <Link color="inherit" href="/">
         Football Evolution Training
@@ -33,16 +33,17 @@ function Copyright(props) {
 const theme = createTheme();
 
 export default function SignUp() {
-  const [formState, setFormState] = useState({ 
-    firstName: '', 
-    lastName: '', 
-    email: '', 
+  const [formState, setFormState] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
     password: '',
     dateOfBirth: '',
-    preffered_foot:'',
-    preffered_position: '' });
-  
-    const [addUser] = useMutation(ADD_USER);
+    preffered_foot: '',
+    preffered_position: ''
+  });
+
+  const [addUser] = useMutation(ADD_USER);
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -84,150 +85,155 @@ export default function SignUp() {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <CssBaseline />
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Register
-          </Typography>
-          <Box component="form" noValidate onSubmit={handleFormSubmit} sx={{ mt: 3 }}>
-            <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  autoComplete="given-name"
-                  name="firstName"
-                  required
-                  fullWidth
-                  id="firstName"
-                  label="Given Names"
-                  autoFocus
-                  onChange={handleChange}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <TextField
-                  required
-                  fullWidth
-                  id="lastName"
-                  label="Family Name"
-                  name="lastName"
-                  autoComplete="family-name"
-                  onChange={handleChange}
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <DatePicker onValue={enterDoB} />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <FormControl fullWidth>
+    <Container component="main" maxWidth="xs" sx={{ mb: 4}}>
+      <CssBaseline />
+      <Box
+        sx={{
+          marginTop: 8,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        <Avatar sx={{ m: 1, bgcolor: '#07c400' }}>
+        </Avatar>
+        <Typography component="h1" variant="h5">
+          Register
+        </Typography>
+        <Box component="form" noValidate onSubmit={handleFormSubmit} sx={{ mt: 3 }}>
+          <Grid container spacing={2}>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                inputProps={{ style: { fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif`, color: 'black' } }}
+                InputLabelProps={{ style: { fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif`, color: 'black' } }}
+                autoComplete="given-name"
+                name="firstName"
+                required
+                fullWidth
+                id="firstName"
+                label="Given Names"
+                autoFocus
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                inputProps={{ style: { fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif`, color: 'black' } }}
+                InputLabelProps={{ style: { fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif`, color: 'black' } }}
+                required
+                fullWidth
+                id="lastName"
+                label="Family Name"
+                name="lastName"
+                autoComplete="family-name"
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <DatePicker onValue={enterDoB} />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <FormControl fullWidth>
 
-                  <InputLabel id="preffered_position">Preffered Position</InputLabel>
-                  <Select
-                    labelId="preffered_position"
-                    name="preffered_position"
-                    id="preffered_position"
-                    label="preffered_position"
-                    value={formState.preffered_position}
-                    onChange={handleChange}
-                  >
-                    <MenuItem value="GK">Goalkeeper</MenuItem>
-                    <Divider />
-                    <MenuItem value="DEF">Defender</MenuItem>
-                    <MenuItem value="CB">Center Back</MenuItem>
-                    <MenuItem value="RB">Right Back</MenuItem>
-                    <MenuItem value="RWB">Right Wing Back</MenuItem>
-                    <MenuItem value="LB">Left Back</MenuItem>
-                    <MenuItem value="LWB">Left Wing Back</MenuItem>
-                    <Divider />
-                    <MenuItem value="MID">Midfielder</MenuItem>
-                    <MenuItem value="CM">Central Midfielder</MenuItem>
-                    <MenuItem value="CAM">Defensive Midfielder</MenuItem>
-                    <MenuItem value="CDM">Attacking Midfielder</MenuItem>
-                    <MenuItem value="RM">Right Midfielder</MenuItem>
-                    <MenuItem value="LF">Left Midfielder</MenuItem>
-                    <Divider />
-                    <MenuItem value="FWD">Forward</MenuItem>
-                    <MenuItem value="ST">Striker</MenuItem>
-                    <MenuItem value="CF">Center Forward</MenuItem>
-                    <MenuItem value="RF">Right Forward</MenuItem>
-                    <MenuItem value="RW">Right Wing</MenuItem>
-                    <MenuItem value="LF">Left Forward</MenuItem>
-                    <MenuItem value="LW">Left Wing</MenuItem>
-                  </Select>
-                </FormControl>
-              </Grid>
-              <Grid item xs={12} >
-                <FormControl fullWidth sx={{ textAlign: 'center', justifyContent: 'center' }}>
-                  <FormLabel id="preffered_foot">Preffered Foot</FormLabel>
-                  <RadioGroup
-                    row
-                    aria-labelledby="preffered_foot"
-                    name="preffered_foot"
-                    label="preffered_foot"
-                    id="preffered_foot"
-                    onChange={handleChange}
-                    sx={{ textAlign: 'center', justifyContent: 'center' }}
-                  >
-                    <FormControlLabel value="Left" control={<Radio color="success" />} label="Left" />
-                    <FormControlLabel value="Right" control={<Radio color="success" />} label="Right" />
-                    <FormControlLabel value="Both" control={<Radio color="success" />} label="Both" />
-                  </RadioGroup>
-                </FormControl>
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  id="email"
-                  label="Email Address"
-                  name="email"
-                  autoComplete="email"
+                <InputLabel id="preffered_position">Preffered Position</InputLabel>
+                <Select
+                  labelId="preffered_position"
+                  name="preffered_position"
+                  id="preffered_position"
+                  label="preffered_position"
+                  value={formState.preffered_position}
                   onChange={handleChange}
-                />
-              </Grid>
-              <Grid item xs={12}>
-                <TextField
-                  required
-                  fullWidth
-                  name="password"
-                  label="Password"
-                  type="password"
-                  id="password"
-                  autoComplete="new-password"
-                  onChange={handleChange}
-                />
-              </Grid>
+                >
+                  <MenuItem value="GK">Goalkeeper</MenuItem>
+                  <Divider />
+                  <MenuItem value="DEF">Defender</MenuItem>
+                  <MenuItem value="CB">Center Back</MenuItem>
+                  <MenuItem value="RB">Right Back</MenuItem>
+                  <MenuItem value="RWB">Right Wing Back</MenuItem>
+                  <MenuItem value="LB">Left Back</MenuItem>
+                  <MenuItem value="LWB">Left Wing Back</MenuItem>
+                  <Divider />
+                  <MenuItem value="MID">Midfielder</MenuItem>
+                  <MenuItem value="CM">Central Midfielder</MenuItem>
+                  <MenuItem value="CAM">Defensive Midfielder</MenuItem>
+                  <MenuItem value="CDM">Attacking Midfielder</MenuItem>
+                  <MenuItem value="RM">Right Midfielder</MenuItem>
+                  <MenuItem value="LF">Left Midfielder</MenuItem>
+                  <Divider />
+                  <MenuItem value="FWD">Forward</MenuItem>
+                  <MenuItem value="ST">Striker</MenuItem>
+                  <MenuItem value="CF">Center Forward</MenuItem>
+                  <MenuItem value="RF">Right Forward</MenuItem>
+                  <MenuItem value="RW">Right Wing</MenuItem>
+                  <MenuItem value="LF">Left Forward</MenuItem>
+                  <MenuItem value="LW">Left Wing</MenuItem>
+                </Select>
+              </FormControl>
             </Grid>
-            <Button
-              type="submit"
-              fullWidth
-              variant="contained"
-              sx={{ mt: 3, mb: 2 }}
+            <Grid item xs={12} >
+              <FormControl fullWidth sx={{ textAlign: 'center', justifyContent: 'center' }}>
+                <FormLabel id="preffered_foot">Preffered Foot</FormLabel>
+                <RadioGroup
+                  row
+                  aria-labelledby="preffered_foot"
+                  name="preffered_foot"
+                  label="preffered_foot"
+                  id="preffered_foot"
+                  onChange={handleChange}
+                  sx={{ textAlign: 'center', justifyContent: 'center' }}
+                >
+                  <FormControlLabel value="Left" control={<Radio color="success" />} label="Left" />
+                  <FormControlLabel value="Right" control={<Radio color="success" />} label="Right" />
+                  <FormControlLabel value="Both" control={<Radio color="success" />} label="Both" />
+                </RadioGroup>
+              </FormControl>
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                inputProps={{ style: { fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif`, color: 'black' } }}
+                InputLabelProps={{ style: { fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif`, color: 'black' } }}
+                required
+                fullWidth
+                id="email"
+                label="Email Address"
+                name="email"
+                autoComplete="email"
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <TextField
+                inputProps={{ style: { fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif`, color: 'black' } }}
+                InputLabelProps={{ style: { fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif`, color: 'black' } }}
+                required
+                fullWidth
+                name="password"
+                label="Password"
+                type="password"
+                id="password"
+                autoComplete="new-password"
+                onChange={handleChange}
+              />
+            </Grid>
+          </Grid>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            sx={{ mt: 3, mb: 2, color: 'white', backgroundColor: '#07c400', '&:hover': { backgroundColor: '#047a00'}, textTransform: 'none', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif`, fontSize: '1rem' }}
             >
-              Register
-            </Button>
-            <Grid container justifyContent="center">
-              <Grid item>
-                <Link href="/login" variant="body2">
-                  Already have an account? Sign in
-                </Link>
-              </Grid>
+            Register
+          </Button>
+          <Grid container justifyContent="center">
+            <Grid item>
+              <Link href="/login" variant="body2" sx={{ color: 'black'}}>
+                Already have an account? Sign in
+              </Link>
             </Grid>
-          </Box>
+          </Grid>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
-      </Container>
-    </ThemeProvider>
+      </Box>
+      <Copyright sx={{ mt: 5 }} />
+    </Container>
   );
 }

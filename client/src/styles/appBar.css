@@ -2,7 +2,7 @@
     max-height: 6rem;
     max-width: 6rem;
     margin: 1rem;
-    margin-left: 2.5rem;
+    margin-left: 9rem;
 }
 
 .nav-bar {
@@ -19,4 +19,26 @@
 
 header {
     box-shadow: none;
+}
+
+.MuiFormControlLabel-label,
+.MuiFormLabel-label-root,
+#preffered_foot,
+#preffered_position,
+.MuiFormControlLabel-root,
+.MuiFormControlLabel-labelPlacementStart,
+.MuiFormControlLabel-labelPlacementTop,
+.MuiFormControlLabel-labelPlacementBottom,
+.MuiFormControlLabel-labelPlacementEnd,
+.MuiFormLabel-labelPlacementEnd,
+.MuiFormControlLabel-label,
+.MuiFormLabel-root,
+.MuiFormLabel-labelPlacementStart,
+.MuiFormLabel-labelPlacementTop,
+.MuiFormLabel-labelPlacementBottom,
+.MuiFormLabel-label,
+.formLabel
+{
+    font-family: 'Raleway', 'Helvetica', 'Arial', sans-serif;
+    color: black;
 }

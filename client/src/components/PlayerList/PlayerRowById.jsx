@@ -31,7 +31,7 @@ export default function PlayerRowById(props) {
             <TableCell align="center">{playerData.date_of_birth}</TableCell>
             <TableCell align="center">{getAge(playerData.date_of_birth)}</TableCell>
             <TableCell align="center">{playerData.email}</TableCell>
-            <TableCell align="center"><Button href={`/player/${playerData._id}`}>View</Button></TableCell>
+            <TableCell align="center"><Button variant='primary' href={`/player/${playerData._id}`}>View</Button></TableCell>
         </TableRow>
     );
 }

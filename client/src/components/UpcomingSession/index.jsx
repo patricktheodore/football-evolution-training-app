@@ -5,7 +5,6 @@ import { useQuery, useMutation } from '@apollo/client';
 import { Button, Card, CardActions, CardContent, Typography } from '@mui/material';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { formatDate } from '../../utils/helpers';
 
 const UpcomingSession = (props) => {
 

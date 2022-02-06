@@ -43,11 +43,9 @@ export default function AccountMenu() {
     if (user.is_coach) {
       return (
         <MenuItem>
-          <ListItemIcon>
             <Link to="/adminDash" className='menu-link'>
               Dashboard
             </Link>
-          </ListItemIcon>
         </MenuItem>
       )
     } else {

@@ -2,31 +2,30 @@ import * as React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Button, Grid } from '@mui/material';
-import { Link } from 'react-router-dom';
+import { Button, Grid, CardActions } from '@mui/material';
 
 export default function SessionListCard(props) {
 
     return (
         <Grid item xs={12}>
             {props.session && (
-                <Card sx={{ flexGrow: 1, minHeight: "5rem" }} key={props.session._id}>
-                    <CardContent>
-                        <Typography gutterBottom variant="h5">
+                <Card sx={{ flexGrow: 1, borderRadius: 3, mt: 5, mx: 2.5 }} key={props.session._id}>
+                    <CardContent sx={{ mx: 10, mt: 3 }} align="justify">
+                        <Typography sx={{ mb: 1.5 }} variant="h5" component="div" align='center'>
                             {props.session.title}
                         </Typography>
-                        <Typography variant="body2" color="text.secondary">
+                        <Typography variant="body2" color="text.secondary" align='center' sx={{ mb: 2 }}>
                             Min Age: {props.session.min_age} | Max Age: {props.session.max_age}
                         </Typography>
-                        <Typography variant="body1" color="text.primary">
+                        <Typography align='center'>
                             {props.session.short_desc}
                         </Typography>
                     </CardContent>
-                    <Link to={`/sessions/${props.session._id}`}>
-                        <Button>
-                            More
+                    <CardActions sx={{ justifyContent: 'center' }}>
+                        <Button href={`/sessions/${props.session._id}`} variant='secondary' align="center" sx={{ mb: 5 }}>
+                            Learn More
                         </Button>
-                    </Link>
+                    </CardActions>
                 </Card>
             )}
         </Grid>
