@@ -202,6 +202,11 @@ export default function PersistentDrawerLeft() {
                 Train With Us
               </Link>
           </MenuItem>
+          <MenuItem>
+              <Link to="/memberships" className='menu-link' onClick={handleDrawerClose}>
+                Memberships
+              </Link>
+          </MenuItem>
           <Divider />
           {drawerNavigation()}
         </MenuList>

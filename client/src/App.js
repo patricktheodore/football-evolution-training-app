@@ -23,6 +23,7 @@ import Player from './pages/Player';
 import { ThemeProvider } from '@mui/material/styles';
 import Theme from './styles/Theme';
 import Footer from './components/Footer';
+import Memberships from './pages/Memberships';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -61,6 +62,7 @@ function App() {
                 <Route exact path="/sessions/:id" element={<SessionDetails />} />
                 <Route exact path="/player/:id" element={<Player />} />
                 <Route exact path="/account" element={<Account />} />
+                <Route exact path="/memberships" element={<Memberships />} />
                 <Route exact path="/adminDash" element={<AdminDash />} />
                 <Route element={<NoMatch />} />
               </Routes>
