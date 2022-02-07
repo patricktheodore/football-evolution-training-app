@@ -22,6 +22,7 @@ import AdminDash from './pages/AdminDash';
 import Player from './pages/Player';
 import { ThemeProvider } from '@mui/material/styles';
 import Theme from './styles/Theme';
+import Footer from './components/Footer';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -44,7 +45,7 @@ const client = new ApolloClient({
 
 function App() {
   return (
-    <ApolloProvider client={client}>
+    <ApolloProvider  client={client}>
       <Router>
         <div>
           <ThemeProvider theme={Theme}>
@@ -63,6 +64,7 @@ function App() {
                 <Route exact path="/adminDash" element={<AdminDash />} />
                 <Route element={<NoMatch />} />
               </Routes>
+              <Footer />
             </StoreProvider>
           </ThemeProvider>
         </div>

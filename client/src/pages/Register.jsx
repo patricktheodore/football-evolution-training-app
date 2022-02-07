@@ -16,6 +16,7 @@ import { ADD_USER } from '../utils/mutations';
 import DatePicker from '../components/DatePicker';
 import moment from 'moment';
 import { Radio, RadioGroup, FormControlLabel, FormLabel, InputLabel, MenuItem, Select, FormControl, Divider } from '@mui/material'
+import { validateEmail, validatePassword } from '../utils/helpers';
 
 function Copyright(props) {
   return (
@@ -42,6 +43,9 @@ export default function SignUp() {
     preffered_foot: '',
     preffered_position: ''
   });
+  const [emailState, setEmailState] = useState(false);
+  const [passwordState, setPasswordState] = useState(false);
+
 
   const [addUser] = useMutation(ADD_USER);
 
@@ -82,7 +86,15 @@ export default function SignUp() {
       ...formState,
       [name]: value,
     });
+    runValidators(name, value)
   };
+
+  const runValidators = (name, value) => {
+    if (name === 'email') {
+      setEmailState(!validateEmail(value));
+    } 
+    setPasswordState(!validatePassword(value));
+  }
 
   return (
     <Container component="main" maxWidth="xs" sx={{ mb: 4}}>
@@ -134,7 +146,6 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12} sm={6}>
               <FormControl fullWidth>
-
                 <InputLabel id="preffered_position">Preffered Position</InputLabel>
                 <Select
                   labelId="preffered_position"
@@ -190,12 +201,13 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
+                            error={emailState}
                 inputProps={{ style: { fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif`, color: 'black' } }}
                 InputLabelProps={{ style: { fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif`, color: 'black' } }}
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
+                label={emailState ? 'Invalid Email Address' : 'Email Address'}
                 name="email"
                 autoComplete="email"
                 onChange={handleChange}
@@ -203,12 +215,13 @@ export default function SignUp() {
             </Grid>
             <Grid item xs={12}>
               <TextField
+              error={passwordState}
                 inputProps={{ style: { fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif`, color: 'black' } }}
                 InputLabelProps={{ style: { fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif`, color: 'black' } }}
                 required
                 fullWidth
                 name="password"
-                label="Password"
+                label={passwordState ? 'Password must have at least one letter, one number and be 8 characters long' : 'Password'}
                 type="password"
                 id="password"
                 autoComplete="new-password"

@@ -23,7 +23,7 @@ export default function PlayerDetails() {
 
 
     return (
-        <Container maxWidth="xl" sx={{ mt: 15, mb: 10 }}>
+        <Container maxWidth="l" sx={{ mt: 15, mb: 10 }}>
             {player && userData && (
                 <Container>
                     <Stack direction="column" spacing={0} sx={{ alignItems: 'center', mb: 2 }}>

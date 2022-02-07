@@ -9,7 +9,7 @@ import Container from '@mui/material/Container';
 
 const Home = () => {
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="l">
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2} sx={{ justifyContent: "center" }}>
           <Grid item xs={12} lg={10}>

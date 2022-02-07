@@ -11,7 +11,7 @@ import SessionList from '../components/SessionList';
 
 export default function AdminDash() {
   return(
-    <Container maxWidth="xl">
+    <Container maxWidth="l">
       <PlayerList />
       <SessionList />
     </Container>

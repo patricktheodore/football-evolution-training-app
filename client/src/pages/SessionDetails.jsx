@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { ADD_USER_TO_SESSION } from '../utils/mutations';
 import { GET_ME, QUERY_SESSION } from '../utils/queries';
 import PlayerRowById from '../components/PlayerList/PlayerRowById';
+import { typography } from '@mui/system';
 
 export default function SessionDetails() {
 
@@ -32,6 +33,20 @@ export default function SessionDetails() {
         });
         console.log({ result });
         window.location.reload();
+    }
+
+    if (!userData) {
+        return (
+            <Container sm={12}>
+                <Card elevation={0}>
+                    <CardContent align='center' sx={{ mt: 10 }}>
+                        <Typography variant='h4'>
+                            Please sign in to view more information.
+                        </Typography>
+                    </CardContent>
+                </Card>
+            </Container>
+        )
     }
 
     return (

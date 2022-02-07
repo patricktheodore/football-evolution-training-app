@@ -11,7 +11,7 @@ import Container from '@mui/material/Container';
 
 const Home = () => {
   return (
-    <Container maxWidth="xl">
+    <Container maxWidth="l">
       <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
             <OurStory />

@@ -18,7 +18,7 @@ export default function index() {
     }; 
 
     return (
-        <Container maxWidth="xl">
+        <Container maxWidth="l">
             <Box sx={{ flexGrow: 1, mt: 10 }}>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
