@@ -9,6 +9,7 @@ export const QUERY_ALL_USERS = gql`
             email
             date_of_birth
             created_at
+            is_coach
             sessions {
                 _id
             }

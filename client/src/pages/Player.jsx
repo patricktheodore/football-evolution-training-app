@@ -35,7 +35,7 @@ export default function PlayerDetails() {
                         </Typography >
                         {userData.me.is_coach === true ? <UpdateStats user={player} /> : '' }
                     </Stack>
-                    <Grid container spacing={2} align={'center'}>
+                    <Grid container spacing={2} align={'center'} sx={{ justifyContent: "center"}}>
                         <StatsDisplay user={player} />
                         <PlayerRating user={player} />
                     </Grid>

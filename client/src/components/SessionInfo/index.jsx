@@ -12,9 +12,9 @@ import { Link } from 'react-router-dom';
 
 const SessionInfo = () => {
     return (
-        <Grid item xs={6} lg={4}>
+        <Grid item xs={12} lg={4}>
             <Card sx={{ flexGrow: 1, borderRadius: 3, minHeight: 420 }}>
-                <CardContent sx={{ mx: 10, mt: 10 }} align="justify">
+                <CardContent className='card-content' sx={{ mx: 10, mt: 10 }} align="justify">
                     <Typography sx={{ mb: 1.5 }} variant="h5" align="center">
                         TRAIN WITH US
                     </Typography>

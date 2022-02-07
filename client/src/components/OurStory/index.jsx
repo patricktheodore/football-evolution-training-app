@@ -6,13 +6,14 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import { Link } from 'react-router-dom';
 import Grid from '@mui/material/Grid';
+import '../../styles/cardStyle.css';
 
 
 const OurStory = () => {
     return (
         <Grid item xs={12} lg={8}>
             <Card sx={{ flexGrow: 1, borderRadius: 3, minHeight: 420 }}>
-                <CardContent sx={{ mx: 10, mt: 10 }} align="justify">
+                <CardContent className="card-content" sx={{ mx: 10, mt: 10 }} align="justify">
                     <Typography sx={{ mb: 1.5 }} variant="h5" component="div" align='center'>
                         OUR STORY
                     </Typography>

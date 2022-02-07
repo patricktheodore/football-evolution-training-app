@@ -4,6 +4,9 @@ import Grid from '@mui/material/Grid';
 import OurStory from '../components/OurStory';
 import SessionInfo from '../components/SessionInfo';
 import Container from '@mui/material/Container';
+import PlayerCount from "../components/PlayerCount";
+import SessionCount from '../components/SessionCount';
+import CoachCount from "../components/CoachCount";
 
 
 // dashboard contains, 'our story' 
@@ -12,10 +15,13 @@ import Container from '@mui/material/Container';
 const Home = () => {
   return (
     <Container maxWidth="l">
-      <Box sx={{ flexGrow: 1 }}>
-        <Grid container spacing={2}>
+      <Box className="home-container" sx={{ flexGrow: 1, mx: 10 }}>
+        <Grid container spacing={4}>
             <OurStory />
             <SessionInfo />
+            <PlayerCount />
+            <SessionCount />
+            <CoachCount />
         </Grid>
       </Box>
     </Container>

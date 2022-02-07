@@ -5,6 +5,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { Button, Card, CardActions, CardContent, Typography } from '@mui/material';
 import { useState } from 'react';
 import { useEffect } from 'react';
+import '../../styles/cardStyle.css';
 
 const UpcomingSession = (props) => {
 
@@ -49,7 +50,7 @@ const UpcomingSession = (props) => {
   if (sessionData) {
 
     return (
-      <Card sx={{ flexGrow: 1, borderRadius: 3, mt: 5, mx: 2.5, px: 15 }}>
+      <Card className='card-content' sx={{ flexGrow: 1, borderRadius: 3, mt: 5, mx: 2.5, px: 15 }}>
         <CardContent align="center">
           <Typography sx={{ mb: 1.5, mt: 4 }} variant="h5" component="div" align='center'>
             Session: {sessionData.title}

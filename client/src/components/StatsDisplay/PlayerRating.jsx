@@ -9,7 +9,7 @@ export default function PlayerRating(props) {
     const playerRating = getOverall(props.user.stats[0]);
 
     return (
-        <Grid item xs={12} lg={4}>
+        <Grid item xs={10} md={6} lg={4}>
             <Card sx={{ position: 'relative', display: 'inline-flex', borderRadius: 3 }}>
                 <CardContent sx={{ justifyContent: 'center'}} align='center'>
                     <Typography variant="h4" align='center'>

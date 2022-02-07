@@ -45,7 +45,7 @@ const Profile = () => {
                         </Typography >
                         <Button href={"/account"} variant="primary" sx={{ width: '10rem' }}> Update Details</Button>
                     </Stack>
-                    <Grid container spacing={2} align={'center'}>
+                    <Grid container spacing={2} align={'center'} sx={{ justifyContent: "center"}}>
                         <StatsDisplay user={user} />
                         <PlayerRating user={user} />
                     </Grid>

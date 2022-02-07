@@ -6,6 +6,8 @@ import { ADD_USER_TO_SESSION } from '../utils/mutations';
 import { GET_ME, QUERY_SESSION } from '../utils/queries';
 import PlayerRowById from '../components/PlayerList/PlayerRowById';
 import { typography } from '@mui/system';
+import '../styles/cardStyle.css';
+
 
 export default function SessionDetails() {
 
@@ -53,7 +55,7 @@ export default function SessionDetails() {
         <Container sm={12} lg={10}>
             <Card elevation={0}>
                 {session && userData && (
-                    <CardContent sx={{ mx: 10, mt: 10 }} align="justify">
+                    <CardContent className='card-content home-container' sx={{ mx: 10, mt: 10 }} align="justify">
                         <Typography sx={{ mb: 5 }} variant="h4" component="div" align='center'>
                             {session.title}
                         </Typography>

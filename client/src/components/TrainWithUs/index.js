@@ -6,6 +6,7 @@ import { UPDATE_SESSIONS } from '../../utils/actions';
 import { QUERY_ALL_SESSIONS } from '../../utils/queries';
 import SessionCard from '../SessionCard';
 import { Grid, Container, Box, Card, CardContent, Typography } from '@mui/material';
+import '../../styles/cardStyle.css';
 
 export default function index() {
     const { data } = useQuery(QUERY_ALL_SESSIONS); 
