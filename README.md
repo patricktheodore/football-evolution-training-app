@@ -127,7 +127,17 @@ Navigate to https://football-evolution-training.herokuapp.com/ and begin :)
   <!-- ACKNOWLEDGMENTS -->
   # Acknowledgments
   Hasan, Gabi and Stevey
+    <br>
+  </br>
 
+  <!-- SCREENSHOTS OF DEPLOYMENT -->
+![Screen Shot 2022-02-08 at 5 21 16 pm](https://user-images.githubusercontent.com/81402349/152956595-73d173ee-e256-44dd-bee7-cc3fdd9eee20.png)
+![Screen Shot 2022-02-08 at 5 22 24 pm](https://user-images.githubusercontent.com/81402349/152957126-ce16b7e8-2039-49e8-a941-602ecfab3289.png)
+![Screen Shot 2022-02-08 at 5 22 36 pm](https://user-images.githubusercontent.com/81402349/152957145-d030348a-5937-4f38-a896-50b33a0986ce.png)
+![Screen Shot 2022-02-08 at 5 23 07 pm](https://user-images.githubusercontent.com/81402349/152957158-269d1fb2-ef81-4cc8-9e2a-18a91e4bc8e4.png)
+![Screen Shot 2022-02-08 at 5 23 32 pm](https://user-images.githubusercontent.com/81402349/152957167-f9b8b33a-d0af-4c97-9a06-c9223c8622fd.png)
+![Screen Shot 2022-02-08 at 5 24 19 pm](https://user-images.githubusercontent.com/81402349/152957175-a834e334-6039-421e-a48e-c18406ee76ca.png)
+![Screen Shot 2022-02-08 at 5 24 25 pm](https://user-images.githubusercontent.com/81402349/152957197-c2f15540-01bf-4004-93de-09e9c4f06d0a.png)
 
   
   <p align="right">(<a href="#top">back to top</a>)</p>  
