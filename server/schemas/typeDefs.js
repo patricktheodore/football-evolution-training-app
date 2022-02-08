@@ -28,6 +28,10 @@ const typeDefs = gql`
         location: String
         players: [User]
     }
+
+    type Checkout {
+        session: ID
+      }
     
     type Stats {
         pace: Int
@@ -77,6 +81,8 @@ const typeDefs = gql`
         session(_id: ID): Session
         user(_id: ID): User
         me: User
+        checkout(price: Int!): Checkout
+
     }
 
     type Mutation {

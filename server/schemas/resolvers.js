@@ -22,7 +22,37 @@ const resolvers = {
         },
         session: async (parent, args) => {
             return await Session.findById(args._id)
-        }
+        },
+        checkout: async (parent, args, context) => {
+            const url = new URL(context.headers.referer).origin;
+            const line_items = [];
+      
+              const product = await stripe.products.create({
+                name: 'Yearly Membership',
+                description: 'Access to unlimited session and coach feedback for 12 months.',
+              });
+      
+              const price = await stripe.prices.create({
+                product: product.id,
+                unit_amount: args.price * 100,
+                currency: 'aud',
+              });
+      
+              line_items.push({
+                price: price.id,
+                quantity: 1
+              });
+      
+            const session = await stripe.checkout.sessions.create({
+              payment_method_types: ['card'],
+              line_items,
+              mode: 'payment',
+              success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+              cancel_url: `${url}/`
+            });
+      
+            return { session: session.id };
+          }
     },
     Mutation: {
         addUser: async (parent, args) => {

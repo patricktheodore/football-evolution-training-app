@@ -114,3 +114,11 @@ query Me {
     }
   }
 `;
+
+export const QUERY_CHECKOUT = gql`
+  query getCheckout($price: Int!) {
+    checkout(price: $price) {
+      session
+    }
+  }
+`;
