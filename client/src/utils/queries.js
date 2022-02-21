@@ -22,6 +22,7 @@ export const QUERY_ALL_SESSIONS = gql`
     sessions {
         _id
         title
+        type
         short_desc
         long_desc
         min_age
@@ -69,6 +70,7 @@ export const QUERY_SESSION = gql`
     query getSession($id: ID) {
         session(_id: $id) {
             title
+            type
             short_desc
             long_desc
             min_age
@@ -121,4 +123,61 @@ export const QUERY_CHECKOUT = gql`
       session
     }
   }
+`;
+
+export const QUERY_CAMPS = gql`
+    query getSession($type: String) {
+        session(type: $type) {
+            title
+            type
+            short_desc
+            long_desc
+            min_age
+            max_age
+            date
+            time
+            location
+            players {
+            _id
+            }
+        }
+    }
+`;
+
+export const QUERY_TOURNAMENTS = gql`
+    query getSession($type: String) {
+        session(type: $type) {
+            title
+            type
+            short_desc
+            long_desc
+            min_age
+            max_age
+            date
+            time
+            location
+            players {
+            _id
+            }
+        }
+    }
+`;
+
+export const QUERY_ACADEMIES = gql`
+    query getSession($type: String) {
+        session(type: $type) {
+            title
+            type
+            short_desc
+            long_desc
+            min_age
+            max_age
+            date
+            time
+            location
+            players {
+            _id
+            }
+        }
+    }
 `;

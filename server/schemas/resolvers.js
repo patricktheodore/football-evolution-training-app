@@ -23,6 +23,15 @@ const resolvers = {
         session: async (parent, args) => {
             return await Session.findById(args._id)
         },
+        camps: async (parents, args) => {
+            return await Session.find({ type: args.type })
+        },
+        tournaments: async () => {
+            return await Session.find({ type: args.type })
+        },
+        academies: async () => {
+            return await Session.find({ type: args.type })
+        },
         checkout: async (parent, args, context) => {
             const url = new URL(context.headers.referer).origin;
             const line_items = [];

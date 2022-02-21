@@ -19,6 +19,7 @@ const typeDefs = gql`
     type Session {
         _id: ID
         title: String
+        type: String
         short_desc: String
         long_desc: String
         min_age: Int
@@ -48,6 +49,7 @@ const typeDefs = gql`
 
     input SessionInput {
         title: String
+        type: String
         short_desc: String
         long_desc: String
         min_age: Int
@@ -82,7 +84,9 @@ const typeDefs = gql`
         user(_id: ID): User
         me: User
         checkout(price: Int!): Checkout
-
+        camps(type: String): [Session]
+        tournaments(type: String): [Session]
+        academies(type: String): [Session]
     }
 
     type Mutation {

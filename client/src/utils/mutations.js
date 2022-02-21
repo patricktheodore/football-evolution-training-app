@@ -56,6 +56,7 @@ export const ADD_SESSION = gql`
         addSession(input: $input) {
           _id
           title
+          type
           short_desc
           long_desc
           min_age
@@ -113,6 +114,7 @@ export const UPDATE_SESSION = gql`
     mutation UpdateSession($sessionId: ID, $input: SessionInput) {
         removeUserFromSession(sessionId: $sessionId, input: $input) {
           title
+          type
           short_desc
           long_desc
           min_age

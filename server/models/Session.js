@@ -6,6 +6,10 @@ const sessionSchema = new mongoose.Schema({
         type: String,
         trim: true
     },
+    type: {
+        type: String,
+        trim: true
+    },
     short_desc: {
         type: String,
         trim: true
