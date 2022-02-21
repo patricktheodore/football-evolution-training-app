@@ -1,11 +1,10 @@
 import { useMutation, useQuery } from '@apollo/client';
-import { Button, Paper, TableContainer, TableCell, TableBody, Table, TableHead, TableRow, Container, CardContent, Card, Typography, CardActions } from '@mui/material';
+import { Button, Paper, TableContainer, TableCell, TableBody, Table, TableHead, TableRow, Container, CardContent, Card, Typography, CardActions, Link } from '@mui/material';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { ADD_USER_TO_SESSION } from '../utils/mutations';
 import { GET_ME, QUERY_SESSION } from '../utils/queries';
 import PlayerRowById from '../components/PlayerList/PlayerRowById';
-import { typography } from '@mui/system';
 import '../styles/cardStyle.css';
 
 
@@ -43,7 +42,7 @@ export default function SessionDetails() {
                 <Card elevation={0}>
                     <CardContent align='center' sx={{ mt: 10 }}>
                         <Typography variant='h4'>
-                            Please sign in to view more information.
+                            Please <Link className='no-auth' href="/login">Login</Link> or <Link className='no-auth' href='/Register'>Sign Up</Link> to view more information.
                         </Typography>
                     </CardContent>
                 </Card>

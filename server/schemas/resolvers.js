@@ -23,13 +23,13 @@ const resolvers = {
         session: async (parent, args) => {
             return await Session.findById(args._id)
         },
-        camps: async (parents, args) => {
+        camps: async (parent, args) => {
             return await Session.find({ type: args.type })
         },
-        tournaments: async () => {
+        tournaments: async (parent, args) => {
             return await Session.find({ type: args.type })
         },
-        academies: async () => {
+        academies: async (parent, args) => {
             return await Session.find({ type: args.type })
         },
         checkout: async (parent, args, context) => {

@@ -21,7 +21,7 @@ function Copyright(props) {
 
 export default function Footer() {
     return (
-        <Container maxWidth="xl" className='footer-container' align="center" sx={{ justifyContent: 'center', mt: 20, backgroundColor: "#11661f" }}>
+        <Container maxWidth="xl" className='footer-container' align="center" sx={{ justifyContent: 'center', mt: 20, backgroundColor: "#0d9524" }}>
             <Stack
                 direction={{ xs: 'column', md: 'row' }}
                 spacing={{ xs: 4, lg: 10 }}

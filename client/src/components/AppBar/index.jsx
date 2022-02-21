@@ -203,6 +203,26 @@ export default function PersistentDrawerLeft() {
               </Link>
           </MenuItem>
           <MenuItem>
+              <Link to="/academies" className='menu-link' onClick={handleDrawerClose}>
+                The FET Academy
+              </Link>
+          </MenuItem>
+          <MenuItem>
+              <Link to="/camps" className='menu-link' onClick={handleDrawerClose}>
+                Camps
+              </Link>
+          </MenuItem>
+          <MenuItem>
+              <Link to="/tournaments" className='menu-link' onClick={handleDrawerClose}>
+                Tournaments
+              </Link>
+          </MenuItem>
+          <MenuItem>
+              <Link to="/epl" className='menu-link' onClick={handleDrawerClose}>
+                Evolution Premier League
+              </Link>
+          </MenuItem>
+          <MenuItem>
               <Link to="/memberships" className='menu-link' onClick={handleDrawerClose}>
                 Memberships
               </Link>

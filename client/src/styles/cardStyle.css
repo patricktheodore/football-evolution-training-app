@@ -1,3 +1,12 @@
+.no-auth {
+    color: green !important;
+    text-decoration: none !important;
+}
+
+.no-auth:hover {
+    color: black !important;
+}
+
 @media only screen and (max-width: 900px) {
     .card-content, 
     .home-container {

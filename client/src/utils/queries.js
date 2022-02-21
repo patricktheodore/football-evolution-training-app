@@ -126,8 +126,8 @@ export const QUERY_CHECKOUT = gql`
 `;
 
 export const QUERY_CAMPS = gql`
-    query getSession($type: String) {
-        session(type: $type) {
+    query Camps($type: String) {
+        camps(type: $type) {
             title
             type
             short_desc
@@ -145,8 +145,8 @@ export const QUERY_CAMPS = gql`
 `;
 
 export const QUERY_TOURNAMENTS = gql`
-    query getSession($type: String) {
-        session(type: $type) {
+    query Tournaments($type: String) {
+        tournaments(type: $type) {
             title
             type
             short_desc
@@ -164,8 +164,8 @@ export const QUERY_TOURNAMENTS = gql`
 `;
 
 export const QUERY_ACADEMIES = gql`
-    query getSession($type: String) {
-        session(type: $type) {
+    query Academy($type: String) {
+        academies(type: $type) {
             title
             type
             short_desc
