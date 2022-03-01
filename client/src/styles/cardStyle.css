@@ -7,6 +7,10 @@
     color: black !important;
 }
 
+.text-left {
+    text-align: left;
+}
+
 @media only screen and (max-width: 900px) {
     .card-content, 
     .home-container {

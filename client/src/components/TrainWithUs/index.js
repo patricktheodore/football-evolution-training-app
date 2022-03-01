@@ -23,12 +23,12 @@ export default function index() {
             <Box sx={{ flexGrow: 1, mt: 10 }}>
                 <Grid container spacing={2}>
                     <Grid item xs={12}>
-                        <Card sx={{ flexGrow: 1, borderRadius: 3 }}>
+                        <Card sx={{ flexGrow: 1, borderRadius: 3 }} elevation={5}>
                             <CardContent sx={{ mx: 10, mt: 10 }} align="center">
                                 <Typography sx={{ mb: 5 }} variant="h5" component="div" align='center'>
                                     TRAIN WITH US
                                 </Typography>
-                                <Typography sx={{ mb: 10 }}>
+                                <Typography sx={{ mb: 10 }} >
                                     We offer a wide range of sessions, dedicated to young and old, players beginning their football
                                     journey, and experienced players looking to take their game to the next level.
                                 </Typography>

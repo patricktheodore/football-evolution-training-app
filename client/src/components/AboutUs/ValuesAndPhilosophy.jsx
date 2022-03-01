@@ -4,7 +4,7 @@ import { Card, CardContent, Typography, Grid } from '@mui/material';
 export default function ValuesAndPhilosophy() {
     return (
         <Grid item xs={12} lg={10}>
-            <Card sx={{ flexGrow: 1, borderRadius: 3, my: 5 }}>
+            <Card sx={{ flexGrow: 1, borderRadius: 3, my: 5 }} elevation={10}>
                 <CardContent sx={{ mx: 4, my: 10 }}>
                     <Typography sx={{ mb: 5, textAlign: "center" }} variant="h5" component="div">
                         VALUES
@@ -38,7 +38,7 @@ export default function ValuesAndPhilosophy() {
                     </Typography>
                 </CardContent>
             </Card>
-            <Card sx={{ flexGrow: 1, my: 10, borderRadius: 3 }}>
+            <Card sx={{ flexGrow: 1, my: 10, borderRadius: 3 }} elevation={10}>
                 <CardContent sx={{ mx: 4, my: 10 }}>
                     <Typography sx={{ mb: 5, textAlign: "center" }} variant="h5" component="div">
                         PHILOSOPHIES

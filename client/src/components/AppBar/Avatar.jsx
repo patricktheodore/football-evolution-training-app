@@ -13,7 +13,7 @@ import Auth from '../../utils/auth';
 import { GET_ME } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
 import { initialize } from '../../utils/helpers';
-import {  Stack } from '@mui/material';
+import { Stack } from '@mui/material';
 import '../../styles/appBar.css';
 
 

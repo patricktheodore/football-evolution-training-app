@@ -37,6 +37,7 @@ export default function Academies() {
     <Container sm={12} lg={10} sx={{ justifyContent: 'center' }}>
         <Header />
         <Content />
+        
     </Container>
   )
 }
