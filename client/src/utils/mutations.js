@@ -112,7 +112,7 @@ export const REMOVE_USER_FROM_SESSION = gql`
 
 export const UPDATE_SESSION = gql`
     mutation UpdateSession($sessionId: ID, $input: SessionInput) {
-        removeUserFromSession(sessionId: $sessionId, input: $input) {
+        updateSession(sessionId: $sessionId, input: $input) {
           title
           type
           short_desc

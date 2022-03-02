@@ -28,6 +28,7 @@ import Academies from './pages/Academies';
 import Camps from './pages/Camps';
 import EPL from './pages/EPL';
 import Tournaments from './pages/Tournaments';
+import EditSession from './pages/EditSession';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -64,6 +65,7 @@ function App() {
                 <Route exact path="/profile" element={<Profile />} />
                 <Route exact path="/trainWithUs" element={<TrainWithUs />} />
                 <Route exact path="/sessions/:id" element={<SessionDetails />} />
+                <Route exact path="/editSession/:id" element={<EditSession />} />
                 <Route exact path="/academies" element={<Academies />} />
                 <Route exact path="/camps" element={<Camps />} />
                 <Route exact path="/tournaments" element={<Tournaments />} />

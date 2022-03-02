@@ -55,8 +55,15 @@ export default function SessionDetails() {
             <Card elevation={0}>
                 {session && userData && (
                     <CardContent className='card-content home-container' sx={{ mx: 10, mt: 10 }} align="justify">
-                        <Typography sx={{ mb: 5 }} variant="h4" component="div" align='center'>
+                        <Typography sx={{ mb: 2 }} variant="h4" component="div" align='center'>
                             {session.title}
+                        </Typography>
+                        <Typography color="text.secondary" align='center'>
+                            Min Age: {session.min_age} | Max Age: {session.max_age}
+                        </Typography>
+                        <Typography color="text.secondary" align='center' sx={{ mb: 4 }}>
+                            Location: {session.location} |
+                            Time: {session.time}
                         </Typography>
                         <Typography align='center'>
                             {session.long_desc}
@@ -64,10 +71,12 @@ export default function SessionDetails() {
                         {
                             userData.me.is_coach === true
                                 ?
-                                ''
+                                <CardActions sx={{ justifyContent: 'center' }}>
+                                    <Button variant='secondary' align="center" sx={{ mt: 5, fontSize: '1rem' }} href={`/editSession/${id}`}>Edit Session Details!</Button>
+                                </CardActions>
                                 : <CardActions sx={{ justifyContent: 'center' }}>
-                                    <Button variant='secondary' align="center" sx={{ mt: 5, fontSize: '1rem'}} onClick={handleSaveSession}>Sign Up To This Session!</Button>
-                                    </CardActions>
+                                    <Button variant='secondary' align="center" sx={{ mt: 5, fontSize: '1rem' }} onClick={handleSaveSession}>Sign Up To This Session!</Button>
+                                </CardActions>
                         }
                         <Typography align='center' variant='h5' sx={{ mt: 10 }}>
                             Players Signed Up For This Session
