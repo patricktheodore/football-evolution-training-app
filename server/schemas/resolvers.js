@@ -162,7 +162,7 @@ const resolvers = {
         updateSession: async (parent, args, context) => {
             const session = await Session.findByIdAndUpdate(
                 { _id: args.sessionId },
-                { $set: args.input },
+                { $set: args },
                 { new: true },
             );
 

@@ -1,5 +1,5 @@
 import { useMutation, useQuery } from '@apollo/client';
-import { Button, Paper, TableContainer, TableCell, TableBody, Table, TableHead, TableRow, Container, CardContent, Card, Typography, CardActions, Link } from '@mui/material';
+import { Button, Box, Paper, TableContainer, TableCell, TableBody, Table, TableHead, TableRow, Container, CardContent, Card, Typography, CardActions, Link } from '@mui/material';
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { ADD_USER_TO_SESSION } from '../utils/mutations';
@@ -55,15 +55,15 @@ export default function SessionDetails() {
             <Card elevation={0}>
                 {session && userData && (
                     <CardContent className='card-content home-container' sx={{ mx: 10, mt: 10 }} align="justify">
-                        <Typography sx={{ mb: 2 }} variant="h4" component="div" align='center'>
+                        <Typography sx={{ mb: 4 }} variant="h4" component="div" align='center'>
                             {session.title}
                         </Typography>
                         <Typography color="text.secondary" align='center'>
-                            Min Age: {session.min_age} | Max Age: {session.max_age}
+                            <Box component="span" fontWeight={'bold'}>Min Age: </Box>{session.min_age} <Box component="span" fontWeight={'bold'} ml={2}>Max Age: </Box>{session.max_age}
                         </Typography>
                         <Typography color="text.secondary" align='center' sx={{ mb: 4 }}>
-                            Location: {session.location} |
-                            Time: {session.time}
+                        <Box component="span" fontWeight={'bold'}>Location: </Box>{session.location}
+                        <Box component="span" fontWeight={'bold'} ml={2}>Time: </Box>{session.time}
                         </Typography>
                         <Typography align='center'>
                             {session.long_desc}

@@ -111,8 +111,8 @@ export const REMOVE_USER_FROM_SESSION = gql`
 `;
 
 export const UPDATE_SESSION = gql`
-    mutation UpdateSession($sessionId: ID, $input: SessionInput) {
-        updateSession(sessionId: $sessionId, input: $input) {
+    mutation UpdateSession($sessionId: ID, $title: String, $type: String, $short_desc: String, $long_desc: String, $min_age: Int, $max_age: Int, $date: String, $time: String, $location: String ) {
+        updateSession(sessionId: $sessionId, title: $title, type: $type, short_desc: $short_desc, long_desc: $long_desc, min_age: $min_age, max_age: $max_age, date: $date, time: $time, location: $location) {
           title
           type
           short_desc

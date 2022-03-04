@@ -98,7 +98,7 @@ const typeDefs = gql`
         saveStats(_id: ID!, pace: String, shooting: String, passing: String, dribbling: String, defending: String, physicality: String, skills: String, weak_foot_ability: String, tactical: String, psychological: String): User
         addUserToSession (sessionId: ID): User!
         removeUserFromSession (sessionId: ID): User!
-        updateSession (sessionId: ID, input: SessionInput): Session!
+        updateSession (sessionId: ID, title: String, type: String, short_desc: String, long_desc: String, min_age: Int, max_age: Int, date: String, time: String, location: String): Session!
     }
 `;
 
