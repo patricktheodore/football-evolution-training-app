@@ -29,6 +29,7 @@ import Camps from './pages/Camps';
 import EPL from './pages/EPL';
 import Tournaments from './pages/Tournaments';
 import EditSession from './pages/EditSession';
+import AddSession from './pages/AddSession';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -74,6 +75,7 @@ function App() {
                 <Route exact path="/account" element={<Account />} />
                 <Route exact path="/memberships" element={<Memberships />} />
                 <Route exact path="/adminDash" element={<AdminDash />} />
+                <Route exact path="/addSession" element={<AddSession />} />
                 <Route element={<NoMatch />} />
               </Routes>
               <Footer />

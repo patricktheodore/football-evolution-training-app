@@ -90,7 +90,7 @@ const resolvers = {
         },
         addSession: async (parent, args) => {
             console.log(args);
-            const session = await Session.create(args.input);
+            const session = await Session.create(args);
             return session
         },
         saveStats: async (parents, args, context) => {

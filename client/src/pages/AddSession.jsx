@@ -1,95 +1,74 @@
-import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
-import { QUERY_SESSION } from '../utils/queries';
-import { useMutation, useQuery } from '@apollo/client';
-import { UPDATE_SESSION } from '../utils/mutations';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Typography, Button, Grid, TextField, Container, CssBaseline, Box, Radio, RadioGroup, FormControlLabel, FormLabel, InputLabel, MenuItem, Select, FormControl, Divider } from '@mui/material'
+import React, { useEffect, useState } from 'react'
+import { ADD_SESSION } from '../utils/mutations';
+import { useMutation } from '@apollo/client';
 import moment from 'moment';
 import DatePicker from '../components/DatePicker';
+import { Typography, Button, Grid, TextField, Container, CssBaseline, Box, Radio, RadioGroup, FormControlLabel, FormLabel, InputLabel, MenuItem, Select, FormControl, Divider } from '@mui/material'
 
 
-const theme = createTheme();
+export default function AddSession() {
 
-export default function EditSession() {
+  const [formState, setFormState] = useState({
+    title: '',
+    type: '',
+    short_desc: '',
+    long_desc: '',
+    min_age: '',
+    max_age: '',
+    date: '',
+    time: '',
+    location: ''
+  });
 
-    const [formState, setFormState] = useState({
-        title: '',
-        type: '',
-        short_desc: '',
-        long_desc: '',
-        min_age: '',
-        max_age: '',
-        date: '',
-        time: '',
-        location: ''
+  const [addSession, { err }] = useMutation(ADD_SESSION);
+
+  const handleChange = (event) => {
+    console.log(formState);
+    const { name, value } = event.target;
+    setFormState({
+      ...formState,
+      [name]: value,
     });
+  };
 
-    const { id } = useParams();
+  const handleFormSubmit = async () => {
+    console.log({ formState });
 
-    const { data } = useQuery(QUERY_SESSION, {
+    //reditect to /sessions/${sessionId}
+
+    try {
+      const result = await addSession({
         variables: {
-            id: id,
+          title: formState.title,
+          type: formState.type,
+          short_desc: formState.short_desc,
+          long_desc: formState.long_desc,
+          min_age: formState.min_age,
+          max_age: formState.max_age,
+          date: formState.date,
+          time: formState.time,
+          location: formState.location
         }
-    });
-
-    const session = data?.session
-
-    const [updateSession, { err }] = useMutation(UPDATE_SESSION);
-
-    useEffect(() => {
-        if (data) {
-            setFormState({ ...session })
-        }
-    }, [data, session]);
-
-    const handleChange = (event) => {
-        console.log(formState);
-        const { name, value } = event.target;
-        setFormState({
-            ...formState,
-            [name]: value,
-        });
-    };
-
-    const handleFormSubmit = async () => {
-        console.log({ formState });
-
-        //reditect to /sessions/${sessionId}
-
-        try {
-            const result = await updateSession({
-                variables: {
-                    sessionId: id,
-                    title: formState.title,
-                    type: formState.type,
-                    short_desc: formState.short_desc,
-                    long_desc: formState.long_desc,
-                    min_age: formState.min_age,
-                    max_age: formState.max_age,
-                    date: formState.date,
-                    time: formState.time,
-                    location: formState.location
-                }
-            });
-            console.log({ result });
-        } catch (err) {
-            console.log(err)
-        }
-    };
-
-    function editDate(newDate) {
-        newDate = moment(newDate).format('DD/MM/yyyy');
-        setFormState({
-            ...formState,
-            date: newDate,
-        })
+      });
+      console.log({ result });
+    } catch (err) {
+      console.log(err)
     }
+  };
 
-    return (
-        <ThemeProvider theme={theme}>
-            {session ? (
-                <Container component="main" maxWidth="l">
+  function editDate(newDate) {
+    newDate = moment(newDate).format('DD/MM/yyyy');
+    setFormState({
+        ...formState,
+        date: newDate,
+    })
+}
+
+
+
+
+  return (
+<Container component="main" maxWidth="l">
                     <CssBaseline />
                     <Box
                         sx={{
@@ -100,7 +79,7 @@ export default function EditSession() {
                         }}
                     >
                         <Typography variant="h5" sx={{ fontWeight: 'light', mb: 4 }}>
-                            Update Session Details: {session.title}
+                            Add New Session
                         </Typography>
                         <Box component="form" onSubmit={handleFormSubmit} sx={{ mt: 3, maxWidth: 'md', width: '100%' }}>
                             <Grid container spacing={2} justifyContent={'space-between'}>
@@ -112,7 +91,6 @@ export default function EditSession() {
                                         name="title"
                                         fullWidth
                                         id="title"
-                                        defaultValue={session.title}
                                         label="Title"
                                         autoFocus
                                         onChange={handleChange}
@@ -126,7 +104,6 @@ export default function EditSession() {
                                         name="location"
                                         fullWidth
                                         id="location"
-                                        defaultValue={session.location}
                                         label="Location"
                                         autoFocus
                                         onChange={handleChange}
@@ -140,7 +117,6 @@ export default function EditSession() {
                                         name="time"
                                         fullWidth
                                         id="time"
-                                        defaultValue={session.time}
                                         label="Time"
                                         autoFocus
                                         onChange={handleChange}
@@ -235,7 +211,6 @@ export default function EditSession() {
                                         name="short_desc"
                                         fullWidth
                                         id="short_desc"
-                                        defaultValue={session.short_desc}
                                         label="Short Description"
                                         autoFocus
                                         onChange={handleChange}
@@ -251,7 +226,6 @@ export default function EditSession() {
                                         name="long_desc"
                                         fullWidth
                                         id="long_desc"
-                                        defaultValue={session.long_desc}
                                         label="Long Description"
                                         autoFocus
                                         onChange={handleChange}
@@ -268,7 +242,7 @@ export default function EditSession() {
                                 Update
                             </Button>
                             <Button
-                                href={`/sessions/${id}`}
+                                href={`/trainWithUs`}
                                 fullWidth
                                 sx={{ mt: 3, mb: 2, color: '#171717', textTransform: 'none', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif`, fontSize: '1rem' }}
                             >
@@ -276,12 +250,5 @@ export default function EditSession() {
                             </Button>
                         </Box>
                     </Box>
-                </Container>
-            ) : (
-                <Typography>
-                    Loading...
-                </Typography>
-            )}
-        </ThemeProvider>
-    )
+                </Container>  )
 }

@@ -52,8 +52,8 @@ export const UPDATE_USER = gql`
 `;
 
 export const ADD_SESSION = gql`
-    mutation addSession($input: SessionInput) {
-        addSession(input: $input) {
+    mutation addSession($title: String, $type: String, $short_desc: String, $long_desc: String, $min_age: Int, $max_age: Int, $date: String, $time: String, $location: String ) {
+        addSession(title: $title, type: $type, short_desc: $short_desc, long_desc: $long_desc, min_age: $min_age, max_age: $max_age, date: $date, time: $time, location: $location) {
           _id
           title
           type
