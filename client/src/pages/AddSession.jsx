@@ -239,10 +239,10 @@ export default function AddSession() {
                                 variant="contained"
                                 sx={{ mt: 3, mb: 2, backgroundColor: '#07c400', '&:hover': { backgroundColor: '#047a00' }, textTransform: 'none', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif`, fontSize: '1rem' }}
                             >
-                                Update
+                                Add
                             </Button>
                             <Button
-                                href={`/trainWithUs`}
+                                href={`/adminDash`}
                                 fullWidth
                                 sx={{ mt: 3, mb: 2, color: '#171717', textTransform: 'none', fontFamily: `'Raleway', 'Helvetica', 'Arial', sans-serif`, fontSize: '1rem' }}
                             >
