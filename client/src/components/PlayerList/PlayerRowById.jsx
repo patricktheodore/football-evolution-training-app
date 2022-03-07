@@ -22,16 +22,19 @@ export default function PlayerRowById(props) {
         }
     }, [data])
 
+    const handleClick = (id) => {
+        const playerId = id;
+        window.location.href = `/player/${playerId}`;
+    }
 
     return (
 
-        <TableRow>
+        <TableRow hover onClick={() => handleClick(playerData._id)} sx={{ '&:hover': { cursor: 'pointer'} }}>
             <TableCell align="center">{playerData.first_name}</TableCell>
             <TableCell align="center">{playerData.last_name}</TableCell>
             <TableCell align="center">{playerData.date_of_birth}</TableCell>
             <TableCell align="center">{getAge(playerData.date_of_birth)}</TableCell>
             <TableCell align="center">{playerData.email}</TableCell>
-            <TableCell align="center"><Button variant='primary' href={`/player/${playerData._id}`}>View</Button></TableCell>
         </TableRow>
     );
 }

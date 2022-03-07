@@ -52,11 +52,9 @@ export default function EditSession() {
         });
     };
 
-    const handleFormSubmit = async () => {
+    const handleFormSubmit = async (event) => {
+        event.preventDefault();
         console.log({ formState });
-
-        //reditect to /sessions/${sessionId}
-
         try {
             const result = await updateSession({
                 variables: {
@@ -76,6 +74,7 @@ export default function EditSession() {
         } catch (err) {
             console.log(err)
         }
+        window.location.href = `/sessions/${id}`;
     };
 
     function editDate(newDate) {
@@ -89,7 +88,7 @@ export default function EditSession() {
     return (
         <ThemeProvider theme={theme}>
             {session ? (
-                <Container component="main" maxWidth="l">
+                <Container component="main" maxWidth="lg">
                     <CssBaseline />
                     <Box
                         sx={{

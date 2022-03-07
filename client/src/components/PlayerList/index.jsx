@@ -22,7 +22,7 @@ const TotalPlayers = () => {
     };
 
     return (
-        <Container maxWidth='xl' >
+        <Container maxWidth='lg' >
             <Typography sx={{ fontWeight: 'light' }} variant="h4" align='center'>
                 Player List
             </Typography>
@@ -35,7 +35,6 @@ const TotalPlayers = () => {
                             <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Date of Birth</TableCell>
                             <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Age</TableCell>
                             <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Email</TableCell>
-                            <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}></TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

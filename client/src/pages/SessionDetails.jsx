@@ -62,8 +62,8 @@ export default function SessionDetails() {
                             <Box component="span" fontWeight={'bold'}>Min Age: </Box>{session.min_age} <Box component="span" fontWeight={'bold'} ml={2}>Max Age: </Box>{session.max_age}
                         </Typography>
                         <Typography color="text.secondary" align='center' sx={{ mb: 4 }}>
-                        <Box component="span" fontWeight={'bold'}>Location: </Box>{session.location}
-                        <Box component="span" fontWeight={'bold'} ml={2}>Time: </Box>{session.time}
+                            <Box component="span" fontWeight={'bold'}>Location: </Box>{session.location}
+                            <Box component="span" fontWeight={'bold'} ml={2}>Time: </Box>{session.time}
                         </Typography>
                         <Typography align='center'>
                             {session.long_desc}
@@ -78,28 +78,34 @@ export default function SessionDetails() {
                                     <Button variant='secondary' align="center" sx={{ mt: 5, fontSize: '1rem' }} onClick={handleSaveSession}>Sign Up To This Session!</Button>
                                 </CardActions>
                         }
-                        <Typography align='center' variant='h5' sx={{ mt: 10 }}>
-                            Players Signed Up For This Session
-                        </Typography>
-                        <TableContainer component={Paper} sx={{ mt: 5, mb: 5, minWidth: '80%' }}>
-                            <Table aria-label="simple table">
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>First Name</TableCell>
-                                        <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Last Name</TableCell>
-                                        <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Date of Birth</TableCell>
-                                        <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Age</TableCell>
-                                        <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Email</TableCell>
-                                        <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}></TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {session.players.map((player) => {
-                                        return <PlayerRowById player={player} key={player._id} />
-                                    })}
-                                </TableBody>
-                            </Table>
-                        </TableContainer>
+                        {session.players[0] ? (
+                            <>
+                                <Typography align='center' variant='h5' sx={{ mt: 10 }}>
+                                    Players Signed Up For This Session
+                                </Typography>
+                                <TableContainer component={Paper} sx={{ mt: 5, mb: 5, minWidth: '80%' }}>
+                                    <Table aria-label="simple table">
+                                        <TableHead>
+                                            <TableRow>
+                                                <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>First Name</TableCell>
+                                                <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Last Name</TableCell>
+                                                <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Date of Birth</TableCell>
+                                                <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Age</TableCell>
+                                                <TableCell align='center' sx={{ fontWeight: 'bold', m: 1 }}>Email</TableCell>
+                                            </TableRow>
+                                        </TableHead>
+                                        <TableBody>
+                                            {session.players.map((player) => {
+                                                return <PlayerRowById player={player} key={player._id} />
+                                            })}
+                                        </TableBody>
+                                    </Table>
+                                </TableContainer>
+                            </>
+                        ) : (
+                            <Typography align='center' variant='h5' sx={{ mt: 10 }}>
+                                Session Empty! Please Add Players
+                            </Typography>)}
                     </CardContent>
                 )}
             </Card>
