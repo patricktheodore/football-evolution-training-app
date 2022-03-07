@@ -11,7 +11,6 @@ export default function PlayerCount() {
 
     if (data) {
         users = data.users
-        console.log(users);
     };
 
 

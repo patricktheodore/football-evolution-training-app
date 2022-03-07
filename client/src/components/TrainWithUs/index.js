@@ -13,8 +13,8 @@ export default function index() {
 
     let sessions = [];
     if (data) {
-        console.log(data);
-        console.log(data.sessions);
+        // console.log(data);
+        // console.log(data.sessions);
         sessions = data.sessions
     }; 
 

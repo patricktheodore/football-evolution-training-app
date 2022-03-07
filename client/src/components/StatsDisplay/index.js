@@ -1,7 +1,7 @@
 import React from 'react';
 import { getOverall } from '../../utils/helpers';
 import { Card, CardContent, Stack, Typography } from '@mui/material';
-import { Grid, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import { Grid, Box, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import { getAge } from '../../utils/helpers';
 
 
@@ -13,7 +13,10 @@ function StatsDisplay(props) {
           <CardContent sx={{ justifyContent: 'center' }} align='center'>
             <Stack direction={'column'}>
               <Typography variant="h4" align='center'>{`${props.user.first_name} ${props.user.last_name}`}</Typography>
-              <Typography>Preffered Foot: {props.user.preffered_foot} | Preffered Position: {props.user.preffered_position}</Typography>
+              <Typography>
+              <Box component="span" fontWeight={'bold'}>Preffered Foot: </Box>{props.user.preffered_foot} 
+              <Box component="span" fontWeight={'bold'} ml={2}>Preffered Position: </Box>{props.user.preffered_position}
+              </Typography>
             </Stack>
             <Typography variant="h4" align='center'>Waiting On Coach Feedback</Typography>
           </CardContent>

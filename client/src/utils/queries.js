@@ -62,6 +62,13 @@ export const QUERY_USER = gql`
             tactical
             psychological
           }
+          feedback {
+            body
+            coach
+            sessionDate
+            session
+            feedbackDate
+          }
         }
       }
 `;
@@ -112,6 +119,13 @@ query Me {
       }
       sessions {
         _id
+      }
+      feedback {
+        body
+        coach
+        sessionDate
+        session
+        feedbackDate
       }
     }
   }

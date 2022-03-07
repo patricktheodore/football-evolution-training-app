@@ -165,8 +165,15 @@ const resolvers = {
                 { $set: args },
                 { new: true },
             );
-
             return session;
+        },
+        addFeedback: async (parent, args, context) => {
+            const user = await User.findByIdAndUpdate(
+                {_id: args.playerId },
+                { $addToSet: { feedback: args } },
+                { new: true },
+                );
+            return user;
         }
     }
 };

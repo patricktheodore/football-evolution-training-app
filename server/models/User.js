@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 const statsSchema = require("./Stats");
+const feedbackSchema = require('./Feedback');
 
 const userSchema = new mongoose.Schema({
     first_name: { 
@@ -51,7 +52,8 @@ const userSchema = new mongoose.Schema({
             ref: 'Session'
         }
     ],
-    stats: [statsSchema]
+    stats: [statsSchema],
+    feedback: [feedbackSchema]
 });
 
 // getter function to formate date. 

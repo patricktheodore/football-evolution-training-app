@@ -8,6 +8,7 @@ import { QUERY_USER, GET_ME } from '../utils/queries';
 import Auth from '../utils/auth';
 import { Button, Grid, Stack, Typography } from '@mui/material';
 import PlayerRating from '../components/StatsDisplay/PlayerRating';
+import Feedback from '../components/Feedback';
 
 const Profile = () => {
     const { _id: userParam } = useParams();
@@ -49,6 +50,18 @@ const Profile = () => {
                         <StatsDisplay user={user} />
                         <PlayerRating user={user} />
                     </Grid>
+                    {user.feedback ? (
+                        <>
+                        <Typography align='center' variant='h4' sx={{ mt: 10 }}>
+                            Recent Coach Feedback
+                        </Typography>
+                        {user.feedback.map((item) => {
+                            return <Feedback feedback={item} key={user.feedback.indexOf(item)}/>
+                        })}
+                        </>
+                    ) : ('')}
+
+
                     <Typography align='center' variant='h4' sx={{ mt: 10 }}>
                         Upcoming Sessions
                     </Typography>

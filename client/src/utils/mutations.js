@@ -125,3 +125,19 @@ export const UPDATE_SESSION = gql`
         }
       }
 `;
+
+export const ADD_FEEDBACK = gql`
+      mutation AddFeedback($playerId: ID, $body: String, $coach: String, $sessionDate: String, $session: String) {
+        addFeedback(playerId: $playerId, body: $body, coach: $coach, sessionDate: $sessionDate, session: $session) {
+          first_name
+          last_name
+          feedback {
+            body
+            coach
+            sessionDate
+            session
+            feedbackDate
+          }
+        }
+      }
+`;

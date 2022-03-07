@@ -7,6 +7,7 @@ import StatsDisplay from '../components/StatsDisplay';
 import UpcomingSession from '../components/UpcomingSession';
 import UpdateStats from '../components/UpdateStats';
 import PlayerRating from '../components/StatsDisplay/PlayerRating';
+import AddFeedback from '../components/AddFeedback';
 
 export default function PlayerDetails() {
 
@@ -33,9 +34,15 @@ export default function PlayerDetails() {
                         <Typography sx={{ mb: 1 }} align='center'>
                             {player.email}
                         </Typography >
-                        {userData.me.is_coach === true ? <UpdateStats user={player} /> : '' }
+                        {userData.me.is_coach === true ?
+                            <>
+                            <UpdateStats user={player} />
+                            <AddFeedback player={player} coach={userData.me} />
+                            </>
+                            :
+                            ''}
                     </Stack>
-                    <Grid container spacing={2} align={'center'} sx={{ justifyContent: "center"}}>
+                    <Grid container spacing={2} align={'center'} sx={{ justifyContent: "center" }}>
                         <StatsDisplay user={player} />
                         <PlayerRating user={player} />
                     </Grid>

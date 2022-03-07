@@ -14,6 +14,7 @@ const typeDefs = gql`
         preffered_foot: String
         sessions: [Session]
         stats: [Stats]
+        feedback: [Feedback]
     }
 
     type Session {
@@ -45,6 +46,14 @@ const typeDefs = gql`
         weak_foot_ability: Int
         tactical: Int
         psychological: Int
+    }
+
+    type Feedback {
+        body: String
+        coach: String
+        sessionDate: String
+        session: String
+        feedbackDate: String
     }
 
     input SessionInput {
@@ -99,6 +108,7 @@ const typeDefs = gql`
         addUserToSession (sessionId: ID): User!
         removeUserFromSession (sessionId: ID): User!
         updateSession (sessionId: ID, title: String, type: String, short_desc: String, long_desc: String, min_age: Int, max_age: Int, date: String, time: String, location: String): Session!
+        addFeedback (playerId: ID, body: String, coach: String, sessionDate: String, session: String, feedbackDate: String): User!
     }
 `;
 
