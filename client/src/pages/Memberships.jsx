@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Typography, Button } from '@mui/material';
+import { Box, Container, Grid, Typography, Button, Link } from '@mui/material';
 import React, { useEffect } from 'react';
 import { loadStripe } from '@stripe/stripe-js';
 import { useLazyQuery } from '@apollo/client';
@@ -55,7 +55,7 @@ export default function Memberships() {
                 }} 
                 onClick={submitCheckout}>BUY</Button >
               ) : (
-                <span>(log in to check out)</span>
+                <span>(<Link className='no-auth' href="/login">Login</Link> to check out)</span>
               )}
             </Container>
           </Grid>

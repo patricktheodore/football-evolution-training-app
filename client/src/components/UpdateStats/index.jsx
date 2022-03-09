@@ -79,7 +79,7 @@ export default function UpdateStats(props) {
     return (
         <div>
             <Button sx={{
-                mt: 2, mb: 5, backgroundColor: '#404040',
+                mt: 2, mb: 0, backgroundColor: '#404040',
                 color: 'white',
                 '&:hover': {
                     backgroundColor: "#07c400",

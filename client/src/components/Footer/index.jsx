@@ -1,4 +1,4 @@
-import { Container, Typography, Stack, Link, IconButton } from '@mui/material';
+import { Box, Typography, Stack, Link, IconButton } from '@mui/material';
 import React from 'react';
 import FacebookSharpIcon from '@mui/icons-material/FacebookSharp';
 import InstagramIcon from '@mui/icons-material/Instagram';
@@ -21,7 +21,7 @@ function Copyright(props) {
 
 export default function Footer() {
     return (
-        <Container maxWidth="xl" className='footer-container' align="center" sx={{ justifyContent: 'center', mt: 20, backgroundColor: "#11661f" }}>
+        <Box className='footer-container' align="center" sx={{ justifyContent: 'center', mt: 20, backgroundColor: "#0d9524" }}>
             <Stack
                 direction={{ xs: 'column', md: 'row' }}
                 spacing={{ xs: 4, lg: 10 }}
@@ -41,6 +41,6 @@ export default function Footer() {
                 </IconButton>
             </Stack>
             <Copyright sx={{ mt: 8, pb: 4 }} /> 
-        </Container>
+        </Box>
     );
 }

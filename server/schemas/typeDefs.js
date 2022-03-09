@@ -14,11 +14,13 @@ const typeDefs = gql`
         preffered_foot: String
         sessions: [Session]
         stats: [Stats]
+        feedback: [Feedback]
     }
 
     type Session {
         _id: ID
         title: String
+        type: String
         short_desc: String
         long_desc: String
         min_age: Int
@@ -46,8 +48,17 @@ const typeDefs = gql`
         psychological: Int
     }
 
+    type Feedback {
+        body: String
+        coach: String
+        sessionDate: String
+        session: String
+        feedbackDate: String
+    }
+
     input SessionInput {
         title: String
+        type: String
         short_desc: String
         long_desc: String
         min_age: Int
@@ -82,7 +93,9 @@ const typeDefs = gql`
         user(_id: ID): User
         me: User
         checkout(price: Int!): Checkout
-
+        camps(type: String): [Session]
+        tournaments(type: String): [Session]
+        academies(type: String): [Session]
     }
 
     type Mutation {
@@ -90,11 +103,12 @@ const typeDefs = gql`
         login (email: String!, password: String!): Auth
         updateUser (first_name: String, last_name: String, preffered_position: String, preffered_foot: String): Auth
         addCoach (first_name: String!, last_name: String!, email:String!, password:String!, is_coach:Boolean=false): User!
-        addSession (input: SessionInput) : Session!
+        addSession (title: String, type: String, short_desc: String, long_desc: String, min_age: Int, max_age: Int, date: String, time: String, location: String) : Session!
         saveStats(_id: ID!, pace: String, shooting: String, passing: String, dribbling: String, defending: String, physicality: String, skills: String, weak_foot_ability: String, tactical: String, psychological: String): User
         addUserToSession (sessionId: ID): User!
         removeUserFromSession (sessionId: ID): User!
-        updateSession (sessionId: ID, input: SessionInput): Session!
+        updateSession (sessionId: ID, title: String, type: String, short_desc: String, long_desc: String, min_age: Int, max_age: Int, date: String, time: String, location: String): Session!
+        addFeedback (playerId: ID, body: String, coach: String, sessionDate: String, session: String, feedbackDate: String): User!
     }
 `;
 

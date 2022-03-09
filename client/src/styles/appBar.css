@@ -42,3 +42,13 @@ header {
     font-family: 'Raleway', 'Helvetica', 'Arial', sans-serif;
     color: black;
 }
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input,
+.css-1sumxir-MuiFormLabel-root-MuiInputLabel-root,
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root,
+.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input,
+.css-1e3dtw0-MuiFormLabel-root-MuiInputLabel-root,
+.css-j204z7-MuiFormControlLabel-root .MuiFormControlLabel-label {
+    font-family: 'Raleway', 'Helvetica', 'Arial', sans-serif !important;
+    color: black !important;
+}

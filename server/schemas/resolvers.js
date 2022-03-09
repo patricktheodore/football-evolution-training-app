@@ -23,6 +23,15 @@ const resolvers = {
         session: async (parent, args) => {
             return await Session.findById(args._id)
         },
+        camps: async (parent, args) => {
+            return await Session.find({ type: args.type })
+        },
+        tournaments: async (parent, args) => {
+            return await Session.find({ type: args.type })
+        },
+        academies: async (parent, args) => {
+            return await Session.find({ type: args.type })
+        },
         checkout: async (parent, args, context) => {
             const url = new URL(context.headers.referer).origin;
             const line_items = [];
@@ -81,7 +90,7 @@ const resolvers = {
         },
         addSession: async (parent, args) => {
             console.log(args);
-            const session = await Session.create(args.input);
+            const session = await Session.create(args);
             return session
         },
         saveStats: async (parents, args, context) => {
@@ -153,11 +162,18 @@ const resolvers = {
         updateSession: async (parent, args, context) => {
             const session = await Session.findByIdAndUpdate(
                 { _id: args.sessionId },
-                { $set: args.input },
+                { $set: args },
                 { new: true },
             );
-
             return session;
+        },
+        addFeedback: async (parent, args, context) => {
+            const user = await User.findByIdAndUpdate(
+                {_id: args.playerId },
+                { $addToSet: { feedback: args } },
+                { new: true },
+                );
+            return user;
         }
     }
 };

@@ -18,7 +18,7 @@ export default function MaterialUIPickers(props) {
   return (
     <LocalizationProvider dateAdapter={DateAdapter}>
       <MobileDatePicker
-        label="Date Of Birth"
+        label={props.type}
         id="dateOfBirth"
         inputFormat="DD/MM/yyyy"
         value={value}

@@ -8,7 +8,7 @@ import Grid from '@mui/material/Grid';
 export default function AboutUs() {
     return (
         <Grid item xs={12} lg={10}>
-            <Card sx={{ flexGrow: 1, borderRadius: 3, my: 5 }} >
+            <Card sx={{ flexGrow: 1, borderRadius: 3, my: 5 }} elevation={10}>
                 <CardContent sx={{ mx: 4, my: 10 }}>
                     <Typography sx={{ textAlign: "center", mb: 5 }} variant="h5" component="div">
                         OUR STORY

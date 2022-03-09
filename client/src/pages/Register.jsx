@@ -142,7 +142,7 @@ export default function SignUp() {
               />
             </Grid>
             <Grid item xs={12} sm={6}>
-              <DatePicker onValue={enterDoB} />
+              <DatePicker onValue={enterDoB} type={'Date of Birth'}/>
             </Grid>
             <Grid item xs={12} sm={6}>
               <FormControl fullWidth>

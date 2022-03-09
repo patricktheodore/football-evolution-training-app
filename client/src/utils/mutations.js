@@ -52,10 +52,11 @@ export const UPDATE_USER = gql`
 `;
 
 export const ADD_SESSION = gql`
-    mutation addSession($input: SessionInput) {
-        addSession(input: $input) {
+    mutation addSession($title: String, $type: String, $short_desc: String, $long_desc: String, $min_age: Int, $max_age: Int, $date: String, $time: String, $location: String ) {
+        addSession(title: $title, type: $type, short_desc: $short_desc, long_desc: $long_desc, min_age: $min_age, max_age: $max_age, date: $date, time: $time, location: $location) {
           _id
           title
+          type
           short_desc
           long_desc
           min_age
@@ -110,9 +111,10 @@ export const REMOVE_USER_FROM_SESSION = gql`
 `;
 
 export const UPDATE_SESSION = gql`
-    mutation UpdateSession($sessionId: ID, $input: SessionInput) {
-        removeUserFromSession(sessionId: $sessionId, input: $input) {
+    mutation UpdateSession($sessionId: ID, $title: String, $type: String, $short_desc: String, $long_desc: String, $min_age: Int, $max_age: Int, $date: String, $time: String, $location: String ) {
+        updateSession(sessionId: $sessionId, title: $title, type: $type, short_desc: $short_desc, long_desc: $long_desc, min_age: $min_age, max_age: $max_age, date: $date, time: $time, location: $location) {
           title
+          type
           short_desc
           long_desc
           min_age
@@ -120,6 +122,22 @@ export const UPDATE_SESSION = gql`
           date
           time
           location
+        }
+      }
+`;
+
+export const ADD_FEEDBACK = gql`
+      mutation AddFeedback($playerId: ID, $body: String, $coach: String, $sessionDate: String, $session: String) {
+        addFeedback(playerId: $playerId, body: $body, coach: $coach, sessionDate: $sessionDate, session: $session) {
+          first_name
+          last_name
+          feedback {
+            body
+            coach
+            sessionDate
+            session
+            feedbackDate
+          }
         }
       }
 `;
