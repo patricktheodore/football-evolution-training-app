@@ -1,8 +1,7 @@
 import * as React from 'react';
 import CircularProgress from '@mui/material/CircularProgress';
-import { Card, CardContent, Typography, CardActions, Box, Grid } from '@mui/material';
+import { Card, CardContent, Typography, Box, Grid } from '@mui/material';
 import { getOverall } from '../../utils/helpers';
-import { typography } from '@mui/system';
 
 
 export default function PlayerRating(props) {

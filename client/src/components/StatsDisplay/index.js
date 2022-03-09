@@ -17,6 +17,7 @@ function StatsDisplay(props) {
               <Box component="span" fontWeight={'bold'}>Preffered Foot: </Box>{props.user.preffered_foot} 
               <Box component="span" fontWeight={'bold'} ml={2}>Preffered Position: </Box>{props.user.preffered_position}
               </Typography>
+              <Typography sx={{ mb: 4, fontWeight: 'bold' }}>{getAge(props.user.date_of_birth)} Year's Old</Typography>
             </Stack>
             <Typography variant="h4" align='center'>Waiting On Coach Feedback</Typography>
           </CardContent>
@@ -31,9 +32,12 @@ function StatsDisplay(props) {
       <Card sx={{ flexGrow: 1, borderRadius: 3, minHeight: 440, mx: 2.5 }}>
         <CardContent sx={{ justifyContent: 'center' }} align='center'>
           <Stack direction={'column'}>
-            <Typography variant="h4" align='center'>{`${props.user.first_name} ${props.user.last_name}`}</Typography>
-            <Typography sx={{ mt: 1 }}>Preffered Foot: {props.user.preffered_foot} | Preffered Position: {props.user.preffered_position}</Typography>
-            <Typography sx={{ mb: 4 }}>{getAge(props.user.date_of_birth)} Year's Old</Typography>
+          <Typography variant="h4" align='center'>{`${props.user.first_name} ${props.user.last_name}`}</Typography>
+          <Typography>
+              <Box component="span" fontWeight={'bold'}>Preffered Foot: </Box>{props.user.preffered_foot} 
+              <Box component="span" fontWeight={'bold'} ml={2}>Preffered Position: </Box>{props.user.preffered_position}
+              </Typography>
+                          <Typography sx={{ mb: 4, fontWeight: 'bold' }}>{getAge(props.user.date_of_birth)} Year's Old</Typography>
           </Stack>
           <Grid container spacing={2} justifyContent={'center'}>
             <Grid item xs={6} lg={3}>
